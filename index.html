@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pellar — broadcast graphics for one-person streams</title>
+<meta name="description" content="Pellar is building animated broadcast graphics for creators who run the whole show themselves. Join the creator waitlist.">
+<meta property="og:title" content="Pellar — broadcast graphics for one-person streams">
+<meta property="og:description" content="Make live scores, polls, market moves and standings look like television.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/graphics/affairs-election.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050810">
+<link rel="icon" href="assets/pellar-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260803b">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Pellar home">
+      <img src="assets/pellar-icon.png" alt="" width="28" height="28">
+      <span>Pellar</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#graphics">Graphics</a>
+      <a href="#voice">Voice</a>
+      <a href="#early-access">Early access</a>
+      <a href="#questions">Questions</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="theme" type="button" aria-label="Switch colour theme">
+        <span aria-hidden="true">◐</span>
+      </button>
+      <a class="btn btn-primary btn-sm" href="#waitlist">Join the creator waitlist</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ── 1. Hero ─────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">Broadcast graphics for one-person streams</p>
+      <h1>Make live stats look like television.</h1>
+      <p class="lede">
+        Pellar turns scores, polls, market moves and standings into animated broadcast graphics.
+        Pick a real template, type the numbers in, then add it to your stream when closed beta opens.
+      </p>
+
+      <form class="signup" data-waitlist novalidate>
+        <label class="sr-only" for="email-hero">Email address</label>
+        <input id="email-hero" type="email" name="email" placeholder="you@channel.com" autocomplete="email" required>
+        <button class="btn btn-primary" type="submit">Join the creator waitlist</button>
+        <p class="signup-msg" role="status" aria-live="polite"></p>
+      </form>
+      <p class="micro">Still in build. Nothing to buy today. We will show pricing before sign-ups open.</p>
+
+      <ul class="hero-proof" aria-label="Product proof">
+        <li><strong>100+</strong><span>working templates</span></li>
+        <li><strong>4</strong><span>creator categories</span></li>
+        <li><strong>Real</strong><span>broadcast work behind it</span></li>
+      </ul>
+    </div>
+
+    <!-- The product in situ: a stream frame with real graphics on it -->
+    <div class="hero-vis" aria-label="A stream frame with two Pellar graphics on it">
+      <div class="frame">
+        <div class="frame-bar"><span class="dot live"></span> LIVE</div>
+        <img class="g-center" src="assets/graphics/sport-matchstats.webp" alt="Animated match statistics graphic: possession, shots, corners"
+             width="912" height="528" data-still="assets/graphics/sport-matchstats.png">
+        <img class="g-lower" src="assets/graphics/sport-scorebug.webp" alt="Animated score bar showing the match score and clock"
+             width="618" height="186" data-still="assets/graphics/sport-scorebug.png">
+      </div>
+      <p class="caption">Working Pellar templates rendered with sample data. These are not mockups.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. Compatibility roadmap ────────────────────────────── -->
+<section class="compat" aria-labelledby="compat-title">
+  <div class="wrap">
+    <div class="compat-head">
+      <div>
+        <p class="eyebrow">Compatibility roadmap</p>
+        <h2 id="compat-title">The apps around your stream.</h2>
+      </div>
+      <p>Creator output is still in development. We will only say “works with” after each app passes an end-to-end Pellar test.</p>
+    </div>
+
+    <ul class="compat-grid">
+      <li class="compat-app">
+        <img src="assets/compat/obs-studio.svg" alt="" width="30" height="30">
+        <span><strong>OBS Studio</strong><small>Closed-beta target</small></span>
+      </li>
+      <li class="compat-app">
+        <span class="compat-wordmark" aria-hidden="true">vMix</span>
+        <span><strong>vMix</strong><small>Closed-beta target</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/streamlabs.svg" alt="" width="30" height="30">
+        <span><strong>Streamlabs</strong><small>Needs Pellar QA</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/xsplit.svg" alt="" width="30" height="30">
+        <span><strong>XSplit</strong><small>Needs Pellar QA</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/elgato.svg" alt="" width="30" height="30">
+        <span><strong>Stream Deck</strong><small>Indirect, through OBS</small></span>
+      </li>
+      <li class="compat-app">
+        <img src="assets/compat/ndi.svg" alt="" width="30" height="30">
+        <span><strong>NDI</strong><small>Output verified locally</small></span>
+      </li>
+    </ul>
+
+    <p class="compat-note">OBS and vMix are the first creator-output test targets. Streamlabs and XSplit accept browser sources but Pellar has not passed QA in either. Stream Deck would control source visibility through OBS; it is not a direct Pellar integration. Logos identify their owners; no partnership is implied.</p>
+  </div>
+</section>
+
+<!-- ── 3. The problem ──────────────────────────────────────── -->
+<section class="band">
+  <div class="wrap narrow">
+    <h2 class="statement">
+      A chart like that normally means a motion designer, a broadcast graphics licence,
+      and a wait. <span class="dim">So most streams show a screenshot of a spreadsheet instead.</span>
+    </h2>
+  </div>
+</section>
+
+<!-- ── 4. Three steps ──────────────────────────────────────── -->
+<section class="band" id="how">
+  <div class="wrap">
+    <h2>Pick. Enter. Add to your scene.</h2>
+    <ol class="steps">
+      <li>
+        <span class="num">01</span>
+        <h3>Pick a template</h3>
+        <p>Over 100 broadcast templates — score bars, poll charts, results tables, league standings,
+          market strips, lower thirds. The same ones we build for broadcasters.</p>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <h3>Type the numbers in</h3>
+        <p>A form, not a timeline. Set your colours and logo once, then let every graphic use the same brand kit.</p>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <h3>Add one browser-source link</h3>
+        <p>This creator-output step is in development, with OBS and vMix as the first closed-beta test targets.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ── 5. The graphics ─────────────────────────────────────── -->
+<section class="band" id="graphics">
+  <div class="wrap">
+    <h2>Working templates, rendered with sample data.</h2>
+    <p class="sub">Every graphic below was rendered from the product and captured frame by frame.
+      Nothing here is a mockup. All data is sample data.</p>
+
+    <div class="grid">
+      <figure class="card">
+        <div class="card-vis"><img loading="lazy" src="assets/graphics/sport-matchstats.webp"
+          alt="Match statistics: possession, shots, on target, corners and fouls animating in"
+          width="912" height="528" data-still="assets/graphics/sport-matchstats.png"></div>
+        <figcaption><span class="tag">Sport</span><strong>Match stats</strong>
+          Bars grow from the numbers you type. Drop it in at half time.</figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="card-vis"><img loading="lazy" src="assets/graphics/markets-bar.webp"
+          alt="Market index strip showing three indices with values and percentage changes"
+          width="956" height="248" data-still="assets/graphics/markets-bar.png"></div>
+        <figcaption><span class="tag">Markets</span><strong>Index strip</strong>
+          Three indices, up or down, coloured automatically.</figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="card-vis"><img loading="lazy" src="assets/graphics/affairs-election.webp"
+          alt="Election results table with four candidates, percentage bars and a reporting line"
+          width="1012" height="608" data-still="assets/graphics/affairs-election.png"></div>
+        <figcaption><span class="tag">Current affairs</span><strong>Results table</strong>
+          Rows fly in one after another, in order.</figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="card-vis"><img loading="lazy" src="assets/graphics/affairs-poll.webp"
+          alt="Poll comparison graphic with paired bars split across three age groups"
+          width="812" height="472" data-still="assets/graphics/affairs-poll.png"></div>
+        <figcaption><span class="tag">Current affairs</span><strong>Poll comparison</strong>
+          Two sides, three breakdowns, one graphic.</figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="card-vis"><img loading="lazy" src="assets/graphics/esports-standings.webp"
+          alt="League standings table with played, won, drawn, lost, goal difference and points"
+          width="1212" height="524" data-still="assets/graphics/esports-standings.png"></div>
+        <figcaption><span class="tag">Gaming and esports</span><strong>League table</strong>
+          A full standings table that builds row by row.</figcaption>
+      </figure>
+
+      <figure class="card">
+        <div class="card-vis"><img loading="lazy" src="assets/graphics/creator-counter.webp"
+          alt="Large animated counter climbing to a subscriber total"
+          width="612" height="378" data-still="assets/graphics/creator-counter.png"></div>
+        <figcaption><span class="tag">Any channel</span><strong>Counter</strong>
+          Counts up to the number. Good for a milestone moment.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. Voice ────────────────────────────────────────────── -->
+<section class="band voice" id="voice">
+  <div class="wrap narrow">
+    <span class="tag tag-accent">In development</span>
+    <h2>Voice control is for the moment your hands are busy.</h2>
+    <p class="big">
+      You are mid-sentence, on camera, and the number just changed. You cannot alt-tab to a
+      graphics app and you cannot ask an operator, because there is no operator.
+    </p>
+    <p class="big">The goal: say the update out loud and let the chart change while you keep talking.</p>
+    <p>
+      Manual entry comes first. Voice is being designed for people who present alone, and we will not
+      call it ready until a creator can use it reliably on air.
+    </p>
+    <p class="vquote"><span class="mono">“Pellar, put the poll up.”</span></p>
+  </div>
+</section>
+
+<!-- ── 7. Who makes this ───────────────────────────────────── -->
+<section class="band proof" id="proof">
+  <div class="wrap">
+    <h2>We build this kit for broadcasters.</h2>
+    <p class="sub">
+      Veles Productions builds and runs broadcast graphics for live television. The frames below are
+      from our US Election Night 2024 package — the graphics going to air, the studio they came from,
+      and the gallery they were run out of. Pellar is that same graphics work, made small enough for
+      one person.
+    </p>
+
+    <div class="proof-hero">
+      <img src="assets/proof/graphic-results.jpg" alt="Election night virtual studio with live results graphics">
+    </div>
+
+    <div class="proof-grid">
+      <figure><img loading="lazy" src="assets/proof/virtual-set.jpg" alt="Virtual election studio with candidate cards and a mandate count">
+        <figcaption>Live results in a virtual set</figcaption></figure>
+      <figure><img loading="lazy" src="assets/proof/studio-camera.jpg" alt="Studio floor with a broadcast camera and a presenter on set">
+        <figcaption>Our studio floor</figcaption></figure>
+      <figure><img loading="lazy" src="assets/proof/control-room.jpg" alt="Gallery operator at a desk in front of a multiviewer wall">
+        <figcaption>The gallery, on the night</figcaption></figure>
+      <figure><img loading="lazy" src="assets/proof/studio-floor.jpg" alt="Wide studio shot with a results map on the floor">
+        <figcaption>Built, lit and run in house</figcaption></figure>
+    </div>
+
+    <p class="micro center">We know what this costs to make, because we make it. That is the point of
+      putting it in your hands instead.</p>
+  </div>
+</section>
+
+<!-- ── 8. Early access ─────────────────────────────────────── -->
+<section class="band" id="early-access">
+  <div class="wrap">
+    <p class="eyebrow">Early access before pricing</p>
+    <h2>Help decide what ships first.</h2>
+    <p class="sub">The product and its pricing are still being shaped. Waitlist members will see the offer before sign-ups open. No payment is required today.</p>
+
+    <div class="early-grid">
+      <div><span class="num">01</span><h3>Tell us what you stream</h3><p>Sport, markets, current affairs, esports, or something we missed.</p></div>
+      <div><span class="num">02</span><h3>Shape the first library</h3><p>Your use case helps set the order for scoreboards, polls, tables and tickers.</p></div>
+      <div><span class="num">03</span><h3>See the offer first</h3><p>We will send beta timing and pricing before asking you to sign up or pay.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 9. Questions ────────────────────────────────────────── -->
+<section class="band" id="questions">
+  <div class="wrap narrow">
+    <h2>Questions</h2>
+
+    <details><summary>Is this another overlay pack?</summary>
+      <p>No. A static pack gives you finished images. Pellar templates animate from the numbers you enter.</p></details>
+
+    <details><summary>I am not a designer. Will this look bad?</summary>
+      <p>You do not design anything. The templates are the same ones we build for broadcasters. You
+      supply the numbers and the template controls the layout, the type and the animation. You can
+      set your colours and your logo once. Every graphic after that uses them.</p></details>
+
+    <details><summary>Will it work with my streaming app?</summary>
+      <p>OBS and vMix are the first closed-beta targets. Streamlabs and XSplit can load browser sources,
+      but Pellar still needs end-to-end QA in both before we claim compatibility.</p></details>
+
+    <details><summary>When can I use it?</summary>
+      <p>Not yet. The waitlist is real and the product is in build. We will tell you before we open
+      it, and we will tell you what it costs before we ask you for money.</p></details>
+  </div>
+</section>
+
+<!-- ── 10. Waitlist ────────────────────────────────────────── -->
+<section class="band cta" id="waitlist">
+  <div class="wrap narrow center">
+    <h2>Help choose what ships first.</h2>
+    <p class="sub">Tell us what you stream. We will use it to prioritise the first scoreboards, polls, tables and tickers, then send pricing before sign-ups open.</p>
+    <form class="signup signup-lg" data-waitlist novalidate>
+      <label class="sr-only" for="email-foot">Email address</label>
+      <input id="email-foot" type="email" name="email" placeholder="you@channel.com" autocomplete="email" required>
+      <label class="sr-only" for="segment">What do you make</label>
+      <select id="segment" name="segment">
+        <option value="">What do you make?</option>
+        <option>Sport</option><option>Markets and finance</option>
+        <option>News and current affairs</option><option>Gaming and esports</option>
+        <option>Something else</option>
+      </select>
+      <button class="btn btn-primary" type="submit">Join the creator waitlist</button>
+      <p class="signup-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p><strong>Pellar</strong> — a Veles Productions product.</p>
+    <p class="micro">Sample data throughout. Graphics captured from the product on 3 August 2026.</p>
+  </div>
+</footer>
+
+<script src="app.js?v=20260803b"></script>
+</body>
+</html>
