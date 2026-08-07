@@ -19,6 +19,34 @@
 </head>
 <body>
 
+<!-- Pre-launch access gate. Client-side only — remove this block to go public. -->
+<div id="gate" style="position:fixed;inset:0;z-index:99999;background:#050810;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;font-family:'Inter',sans-serif;">
+  <img src="assets/pellar-icon.png" alt="" width="44" height="44">
+  <form id="gate-form" style="display:flex;flex-direction:column;gap:.8rem;align-items:center;">
+    <label for="gate-pw" style="color:#8b93a7;font-size:.85rem;letter-spacing:.04em;">This site is not public yet. Enter password:</label>
+    <input id="gate-pw" type="password" autocomplete="off" autofocus
+      style="background:#0b1020;border:1px solid #232a3d;border-radius:8px;color:#e8ecf5;padding:.6rem .9rem;font-size:1rem;width:16rem;text-align:center;">
+    <button type="submit" style="background:#e8ecf5;color:#050810;border:0;border-radius:8px;padding:.6rem 1.4rem;font-size:.9rem;font-weight:600;cursor:pointer;">Enter</button>
+    <p id="gate-err" style="color:#ff6b6b;font-size:.8rem;min-height:1em;margin:0;"></p>
+  </form>
+</div>
+<script>
+(function(){
+  var HASH="2a0b7dfc579f43cb0519ef1c34f2ccab7cc46a3b045692117898adbcd0ee0daa";
+  var KEY="pellar-gate";
+  function unlock(){var g=document.getElementById("gate");if(g)g.remove();document.documentElement.style.overflow="";}
+  async function sha256(s){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("");}
+  if(localStorage.getItem(KEY)===HASH){unlock();return;}
+  document.documentElement.style.overflow="hidden";
+  document.getElementById("gate-form").addEventListener("submit",async function(e){
+    e.preventDefault();
+    var v=document.getElementById("gate-pw").value;
+    if(await sha256(v)===HASH){localStorage.setItem(KEY,HASH);unlock();}
+    else{document.getElementById("gate-err").textContent="Wrong password.";}
+  });
+})();
+</script>
+
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav" id="nav">
