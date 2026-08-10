@@ -336,6 +336,20 @@ p  { margin: 0 0 1.1em; color: var(--text-2); }
     radial-gradient(62% 50% at 50% 116%, color-mix(in srgb, var(--blue) 24%, transparent), transparent 70%);
 }
 .voice > .wrap { position: relative; }
+.voice-in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.voice-orb { width: 100%; max-width: 400px; height: auto; justify-self: center; mix-blend-mode: screen; }
+html.light .voice-orb { mix-blend-mode: normal; border-radius: var(--r-lg); }
+@media (max-width: 860px) {
+  .voice-in { grid-template-columns: 1fr; }
+  .voice-orb { max-width: 280px; }
+}
+
+/* Feature icons */
+.ico { width: 26px; height: 26px; color: var(--blue); display: block; margin-bottom: .9rem; }
+.steps .ico { margin-top: .1rem; }
+
+/* Scroll-scrub stage: the studio lights come on as you scroll */
+.band-scrub { min-height: 92vh; display: flex; align-items: center; }
 .vquote {
   margin: 2.2rem 0 0; padding: 1.15rem 1.4rem;
   border-left: 2px solid var(--blue); background: var(--surface-1);

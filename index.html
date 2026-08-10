@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260810e">
+<link rel="stylesheet" href="styles.css?v=20260810f">
 </head>
 <body>
 
@@ -117,11 +117,11 @@
   </div>
 </section>
 
-<!-- ── 2. The problem (over election-night studio footage) ─── -->
-<section class="band band-bg">
+<!-- ── 2. The problem — scroll scrubs the studio lights on ─── -->
+<section class="band band-bg band-scrub">
   <div class="band-media" aria-hidden="true">
-    <video autoplay muted loop playsinline poster="assets/proof/election-studio-poster.jpg">
-      <source src="assets/video/election-studio.mp4" type="video/mp4">
+    <video muted playsinline preload="auto" poster="assets/proof/election-studio-poster.jpg">
+      <source src="assets/video/lights-on-scrub.mp4" type="video/mp4">
     </video>
   </div>
   <div class="wrap narrow">
@@ -134,19 +134,23 @@
 
 <!-- ── 3. Voice — the point of the product ─────────────────── -->
 <section class="band voice" id="voice">
-  <div class="wrap narrow">
-    <span class="tag tag-accent">In development</span>
-    <h2>Voice-command your command centre.</h2>
-    <p class="big">
-      You are mid-sentence, on camera, and the number just changed. There is no operator
-      behind you, no gallery, no desk of buttons. So you say the update out loud, and the
-      chart changes while you keep talking. Still presenting. Still in command.
-    </p>
-    <p class="vquote"><span class="mono">“Pellar, put the poll up.”</span></p>
-    <p>
-      Manual entry ships first. Voice is being designed for people who present alone,
-      and we will not call it ready until a creator can use it reliably on air.
-    </p>
+  <div class="wrap voice-in">
+    <div class="voice-copy">
+      <span class="tag tag-accent">In development</span>
+      <h2>Voice-command your command centre.</h2>
+      <p class="big">
+        You are mid-sentence, on camera, and the number just changed. There is no operator
+        behind you, no gallery, no desk of buttons. So you say the update out loud, and the
+        chart changes while you keep talking. Still presenting. Still in command.
+      </p>
+      <p class="vquote"><span class="mono">“Pellar, put the poll up.”</span></p>
+      <p>
+        Manual entry ships first. Voice is being designed for people who present alone,
+        and we will not call it ready until a creator can use it reliably on air.
+      </p>
+    </div>
+    <img class="voice-orb" src="assets/art/hand-orb.webp" width="900" height="1125"
+         alt="A hand reaching toward a small glowing orb" loading="lazy">
   </div>
 </section>
 
@@ -157,13 +161,19 @@
     <p class="sub">A voice interface with nothing under it would be a gimmick.
       Under Pellar's there are templates.</p>
     <div class="early-grid">
-      <div><span class="num">01</span><h3>Grounded in broadcast work</h3>
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="2"/><path d="M12 10v11"/><path d="M8.4 11.6a5 5 0 0 1 0-7.2"/><path d="M15.6 4.4a5 5 0 0 1 0 7.2"/></svg>
+        <h3>Grounded in broadcast work</h3>
         <p>Every template started as broadcast output we stand behind. “Put the poll up”
           lands on a tested layout, never a blank canvas.</p></div>
-      <div><span class="num">02</span><h3>Bring your own</h3>
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 4H6a2 2 0 0 0-2 2v10"/></svg>
+        <h3>Bring your own</h3>
         <p>Already have graphics you like? Pellar takes your existing templates and
           recreates them as working Pellar ones in a snap.</p></div>
-      <div><span class="num">03</span><h3>Build your own</h3>
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><path d="M17.5 14.5v6M14.5 17.5h6"/></svg>
+        <h3>Build your own</h3>
         <p>The template studio follows the same rule: no menu tree. Making a template
           is as easy as using one.</p></div>
     </div>
@@ -177,17 +187,20 @@
     <ol class="steps">
       <li>
         <span class="num">01</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="14" height="10" rx="1.5"/><path d="M13.5 12.5l6 2.3-2.7 1.1-1.1 2.7z"/></svg>
         <h3>Choose a template</h3>
         <p>Over 100 broadcast templates — score bars, poll charts, results tables, league standings,
           market strips, lower thirds. The same ones we build for broadcasters.</p>
       </li>
       <li>
         <span class="num">02</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h9M19.5 8H20M4 16h3M13.5 16H20"/><circle cx="15.5" cy="8" r="2"/><circle cx="9.5" cy="16" r="2"/></svg>
         <h3>Edit the numbers</h3>
         <p>A form, not a timeline. Set your colours and logo once, then let every graphic use the same brand kit.</p>
       </li>
       <li>
         <span class="num">03</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 9h18"/><path d="M12 11.5v5M9.5 14h5"/></svg>
         <h3>Add one browser-source link</h3>
         <p>This creator-output step is in development, with OBS and vMix as the first closed-beta test targets.</p>
       </li>
@@ -331,9 +344,15 @@
     <p class="sub">The product and its pricing are still being shaped. Waitlist members will see the offer before sign-ups open. No payment is required today.</p>
 
     <div class="early-grid">
-      <div><span class="num">01</span><h3>Tell us what you stream</h3><p>Sport, markets, current affairs, esports, or something we missed.</p></div>
-      <div><span class="num">02</span><h3>Shape the first library</h3><p>Your use case helps set the order for scoreboards, polls, tables and tickers.</p></div>
-      <div><span class="num">03</span><h3>See the offer first</h3><p>We will send beta timing and pricing before asking you to sign up or pay.</p></div>
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H9l-5 4z"/></svg>
+        <h3>Tell us what you stream</h3><p>Sport, markets, current affairs, esports, or something we missed.</p></div>
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13.5l9 5 9-5"/></svg>
+        <h3>Shape the first library</h3><p>Your use case helps set the order for scoreboards, polls, tables and tickers.</p></div>
+      <div>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="2.5"/></svg>
+        <h3>See the offer first</h3><p>We will send beta timing and pricing before asking you to sign up or pay.</p></div>
     </div>
   </div>
 </section>
@@ -442,6 +461,8 @@
   </div>
 </footer>
 
-<script src="app.js?v=20260810e"></script>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="app.js?v=20260810f"></script>
 </body>
 </html>

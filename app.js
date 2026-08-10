@@ -91,6 +91,37 @@
     setTimeout(function () { b.classList.remove('is-lit'); }, 420);
   });
 
+  /* Scroll-scrubbed "lights on": the statement band pins and scrolling
+     drives the studio video from black to fully lit. GSAP ScrollTrigger
+     (vendored) does the pin; reduced motion or a missing lib falls back
+     to the fully-lit final frame. */
+  var scrubVid = document.querySelector('.band-scrub video');
+  if (scrubVid) {
+    scrubVid.pause();
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var showLit = function () {
+      if (scrubVid.duration) scrubVid.currentTime = Math.max(0, scrubVid.duration - 0.05);
+    };
+    if (reduced || !window.gsap || !window.ScrollTrigger) {
+      if (scrubVid.readyState >= 1) showLit();
+      else scrubVid.addEventListener('loadedmetadata', showLit);
+    } else {
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.create({
+        trigger: '.band-scrub',
+        start: 'top top',
+        end: '+=140%',
+        pin: true,
+        scrub: 0.6,
+        onUpdate: function (self) {
+          if (scrubVid.duration) {
+            scrubVid.currentTime = self.progress * (scrubVid.duration - 0.05);
+          }
+        }
+      });
+    }
+  }
+
   /* Mixer fader <-> graphics carousel sync. The fader only shows in the
      small-screen layout where the grid scrolls horizontally. */
   var fader = document.getElementById('grid-fader');
