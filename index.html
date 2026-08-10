@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260810c">
+<link rel="stylesheet" href="styles.css?v=20260810d">
 </head>
 <body>
 
@@ -56,9 +56,9 @@
       <span>Pellar</span>
     </a>
     <nav class="nav-links" aria-label="Sections">
+      <a href="#voice">Voice</a>
       <a href="#how">How it works</a>
       <a href="#graphics">Graphics</a>
-      <a href="#voice">Voice</a>
       <a href="#early-access">Early access</a>
       <a href="#questions">Questions</a>
       <a href="about.html">About</a>
@@ -117,49 +117,7 @@
   </div>
 </section>
 
-<!-- ── 2. Compatibility roadmap ────────────────────────────── -->
-<section class="compat" aria-labelledby="compat-title">
-  <div class="wrap">
-    <div class="compat-head">
-      <div>
-        <p class="eyebrow">Compatibility roadmap</p>
-        <h2 id="compat-title">The apps around your stream.</h2>
-      </div>
-      <p>Creator output is still in development. We will only say “works with” after each app passes an end-to-end Pellar test.</p>
-    </div>
-
-    <ul class="compat-grid">
-      <li class="compat-app">
-        <img src="assets/compat/obs-studio.svg" alt="" width="30" height="30">
-        <span><strong>OBS Studio</strong><small>Closed-beta target</small></span>
-      </li>
-      <li class="compat-app">
-        <span class="compat-wordmark" aria-hidden="true">vMix</span>
-        <span><strong>vMix</strong><small>Closed-beta target</small></span>
-      </li>
-      <li class="compat-app muted">
-        <img src="assets/compat/streamlabs.svg" alt="" width="30" height="30">
-        <span><strong>Streamlabs</strong><small>Needs Pellar QA</small></span>
-      </li>
-      <li class="compat-app muted">
-        <img src="assets/compat/xsplit.svg" alt="" width="30" height="30">
-        <span><strong>XSplit</strong><small>Needs Pellar QA</small></span>
-      </li>
-      <li class="compat-app muted">
-        <img src="assets/compat/elgato.svg" alt="" width="30" height="30">
-        <span><strong>Stream Deck</strong><small>Indirect, through OBS</small></span>
-      </li>
-      <li class="compat-app">
-        <img src="assets/compat/ndi.svg" alt="" width="30" height="30">
-        <span><strong>NDI</strong><small>Output verified locally</small></span>
-      </li>
-    </ul>
-
-    <p class="compat-note">OBS and vMix are the first creator-output test targets. Streamlabs and XSplit accept browser sources but Pellar has not passed QA in either. Stream Deck would control source visibility through OBS; it is not a direct Pellar integration. Logos identify their owners; no partnership is implied.</p>
-  </div>
-</section>
-
-<!-- ── 3. The problem (over control-room footage) ──────────── -->
+<!-- ── 2. The problem (over control-room footage) ──────────── -->
 <section class="band band-bg">
   <div class="band-media" aria-hidden="true">
     <video autoplay muted loop playsinline poster="assets/proof/controlroom-poster.jpg">
@@ -168,10 +126,48 @@
   </div>
   <div class="wrap narrow">
     <h2 class="statement">
-      A chart like that normally means a motion designer, a broadcast graphics licence,
-      and a wait. <span class="dim">So most streams show a screenshot of a spreadsheet instead.</span>
+      That chart used to take a motion designer and a wait.
+      <span class="dim">So most streams show a spreadsheet instead.</span>
     </h2>
     <p class="micro band-media-note">Behind this text: our gallery, mid-production.</p>
+  </div>
+</section>
+
+<!-- ── 3. Voice — the point of the product ─────────────────── -->
+<section class="band voice" id="voice">
+  <div class="wrap narrow">
+    <span class="tag tag-accent">In development</span>
+    <h2>Say it. It's on screen.</h2>
+    <p class="big">
+      You are mid-sentence, on camera, and the number just changed. You cannot alt-tab
+      to a graphics app, and there is no operator. So you say the update out loud and
+      the chart changes while you keep talking.
+    </p>
+    <p class="vquote"><span class="mono">“Pellar, put the poll up.”</span></p>
+    <p>
+      Manual entry ships first. Voice is being designed for people who present alone,
+      and we will not call it ready until a creator can use it reliably on air.
+    </p>
+  </div>
+</section>
+
+<!-- ── 3b. Grounded in templates ───────────────────────────── -->
+<section class="band">
+  <div class="wrap">
+    <h2>Not flying blind.</h2>
+    <p class="sub">A voice interface with nothing under it would be a gimmick.
+      Under Pellar's there are templates.</p>
+    <div class="early-grid">
+      <div><span class="num">01</span><h3>Grounded in broadcast work</h3>
+        <p>Every template started as broadcast output we stand behind. “Put the poll up”
+          lands on a tested layout, never a blank canvas.</p></div>
+      <div><span class="num">02</span><h3>Bring your own</h3>
+        <p>Already have graphics you like? Pellar takes your existing templates and
+          recreates them as working Pellar ones in a snap.</p></div>
+      <div><span class="num">03</span><h3>Build your own</h3>
+        <p>The template studio follows the same rule: no menu tree. Making a template
+          is as easy as using one.</p></div>
+    </div>
   </div>
 </section>
 
@@ -260,6 +256,13 @@
           Counts up to the number. Good for a milestone moment.</figcaption>
       </figure>
     </div>
+
+    <!-- Mixer-style fader: drives the carousel on small screens -->
+    <div class="fader-wrap">
+      <span class="fader-label" aria-hidden="true">Scrub</span>
+      <label class="sr-only" for="grid-fader">Scroll the template gallery</label>
+      <input class="fader" id="grid-fader" type="range" min="0" max="100" value="0" step="any">
+    </div>
   </div>
 </section>
 
@@ -285,24 +288,6 @@
       Within days it was part of how they worked. That's the version we're now
       sizing down for creators.
     </p>
-  </div>
-</section>
-
-<!-- ── 6. Voice ────────────────────────────────────────────── -->
-<section class="band voice" id="voice">
-  <div class="wrap narrow">
-    <span class="tag tag-accent">In development</span>
-    <h2>Voice control is for the moment your hands are busy.</h2>
-    <p class="big">
-      You are mid-sentence, on camera, and the number just changed. You cannot alt-tab to a
-      graphics app and you cannot ask an operator, because there is no operator.
-    </p>
-    <p class="big">The goal: say the update out loud and let the chart change while you keep talking.</p>
-    <p>
-      Manual entry comes first. Voice is being designed for people who present alone, and we will not
-      call it ready until a creator can use it reliably on air.
-    </p>
-    <p class="vquote"><span class="mono">“Pellar, put the poll up.”</span></p>
   </div>
 </section>
 
@@ -349,6 +334,48 @@
       <div><span class="num">02</span><h3>Shape the first library</h3><p>Your use case helps set the order for scoreboards, polls, tables and tickers.</p></div>
       <div><span class="num">03</span><h3>See the offer first</h3><p>We will send beta timing and pricing before asking you to sign up or pay.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- ── 8b. Compatibility roadmap ───────────────────────────── -->
+<section class="compat" aria-labelledby="compat-title">
+  <div class="wrap">
+    <div class="compat-head">
+      <div>
+        <p class="eyebrow">Compatibility roadmap</p>
+        <h2 id="compat-title">The apps around your stream.</h2>
+      </div>
+      <p>Creator output is still in development. We will only say “works with” after each app passes an end-to-end Pellar test.</p>
+    </div>
+
+    <ul class="compat-grid">
+      <li class="compat-app">
+        <img src="assets/compat/obs-studio.svg" alt="" width="30" height="30">
+        <span><strong>OBS Studio</strong><small>Closed-beta target</small></span>
+      </li>
+      <li class="compat-app">
+        <span class="compat-wordmark" aria-hidden="true">vMix</span>
+        <span><strong>vMix</strong><small>Closed-beta target</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/streamlabs.svg" alt="" width="30" height="30">
+        <span><strong>Streamlabs</strong><small>Needs Pellar QA</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/xsplit.svg" alt="" width="30" height="30">
+        <span><strong>XSplit</strong><small>Needs Pellar QA</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/elgato.svg" alt="" width="30" height="30">
+        <span><strong>Stream Deck</strong><small>Indirect, through OBS</small></span>
+      </li>
+      <li class="compat-app">
+        <img src="assets/compat/ndi.svg" alt="" width="30" height="30">
+        <span><strong>NDI</strong><small>Output verified locally</small></span>
+      </li>
+    </ul>
+
+    <p class="compat-note">OBS and vMix are the first creator-output test targets. Streamlabs and XSplit accept browser sources but Pellar has not passed QA in either. Stream Deck would control source visibility through OBS; it is not a direct Pellar integration. Logos identify their owners; no partnership is implied.</p>
   </div>
 </section>
 
@@ -414,6 +441,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=20260810c"></script>
+<script src="app.js?v=20260810d"></script>
 </body>
 </html>

@@ -79,4 +79,32 @@
       });
     });
   });
+
+  /* ── Tactile details ────────────────────────────────────
+     LED pulse after a primary-button click (the CSS lights the strip
+     while pressed; this keeps it lit a beat longer, like a console key
+     confirming the command). */
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('.btn-primary') : null;
+    if (!b) return;
+    b.classList.add('is-lit');
+    setTimeout(function () { b.classList.remove('is-lit'); }, 420);
+  });
+
+  /* Mixer fader <-> graphics carousel sync. The fader only shows in the
+     small-screen layout where the grid scrolls horizontally. */
+  var fader = document.getElementById('grid-fader');
+  var grid = document.querySelector('#graphics .grid');
+  if (fader && grid) {
+    var syncing = false;
+    var range = function () { return Math.max(1, grid.scrollWidth - grid.clientWidth); };
+    fader.addEventListener('input', function () {
+      syncing = true;
+      grid.scrollLeft = (fader.value / 100) * range();
+      setTimeout(function () { syncing = false; }, 60);
+    });
+    grid.addEventListener('scroll', function () {
+      if (!syncing) fader.value = (grid.scrollLeft / range()) * 100;
+    }, { passive: true });
+  }
 })();
