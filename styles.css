@@ -436,8 +436,9 @@ details p { margin: 0 0 1.2rem; font-size: .96rem; max-width: 68ch; }
   .compat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid {
     display: flex; overflow-x: auto; gap: .9rem; padding-bottom: .75rem;
-    scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; scrollbar-width: thin;
+    scroll-snap-type: x mandatory; overscroll-behavior-inline: contain; scrollbar-width: none;
   }
+  .grid::-webkit-scrollbar { display: none; }
   .card:nth-child(n) { grid-column: auto; flex: 0 0 86%; scroll-snap-align: start; }
   .card-vis { min-height: 0; aspect-ratio: 16/10; }
   .early-grid { grid-template-columns: 1fr; }
