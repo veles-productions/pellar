@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About — Pellar is made by Veles Productions</title>
+<meta name="description" content="Pellar comes from Veles Productions, a Warsaw production studio that builds and runs broadcast graphics for live television.">
+<meta property="og:title" content="About — Pellar is made by Veles Productions">
+<meta property="og:description" content="The team behind Pellar makes live television, virtual sets, film and VR for a living.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/proof/graphic-results.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#050810">
+<link rel="icon" href="assets/pellar-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260810g">
+</head>
+<body>
+
+<!-- Pre-launch access gate. Client-side only — remove this block to go public. -->
+<div id="gate" style="position:fixed;inset:0;z-index:99999;background:#050810;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;font-family:'Inter',sans-serif;">
+  <img src="assets/pellar-icon.png" alt="" width="44" height="44">
+  <form id="gate-form" style="display:flex;flex-direction:column;gap:.8rem;align-items:center;">
+    <label for="gate-pw" style="color:#8b93a7;font-size:.85rem;letter-spacing:.04em;">This site is not public yet. Enter password:</label>
+    <input id="gate-pw" type="password" autocomplete="off" autofocus
+      style="background:#0b1020;border:1px solid #232a3d;border-radius:8px;color:#e8ecf5;padding:.6rem .9rem;font-size:1rem;width:16rem;text-align:center;">
+    <button type="submit" style="background:#e8ecf5;color:#050810;border:0;border-radius:8px;padding:.6rem 1.4rem;font-size:.9rem;font-weight:600;cursor:pointer;">Enter</button>
+    <p id="gate-err" style="color:#ff6b6b;font-size:.8rem;min-height:1em;margin:0;"></p>
+  </form>
+</div>
+<script>
+(function(){
+  var HASH="2a0b7dfc579f43cb0519ef1c34f2ccab7cc46a3b045692117898adbcd0ee0daa";
+  var KEY="pellar-gate";
+  function unlock(){var g=document.getElementById("gate");if(g)g.remove();document.documentElement.style.overflow="";}
+  async function sha256(s){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("");}
+  if(localStorage.getItem(KEY)===HASH){unlock();return;}
+  document.documentElement.style.overflow="hidden";
+  document.getElementById("gate-form").addEventListener("submit",async function(e){
+    e.preventDefault();
+    var v=document.getElementById("gate-pw").value;
+    if(await sha256(v)===HASH){localStorage.setItem(KEY,HASH);unlock();}
+    else{document.getElementById("gate-err").textContent="Wrong password.";}
+  });
+})();
+</script>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="Pellar home">
+      <img src="assets/pellar-icon.png" alt="" width="28" height="28">
+      <span>Pellar</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#graphics">Graphics</a>
+      <a href="index.html#voice">Voice</a>
+      <a href="index.html#early-access">Early access</a>
+      <a href="index.html#questions">Questions</a>
+      <a href="about.html" aria-current="page">About</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="theme" type="button" aria-label="Switch colour theme">
+        <span aria-hidden="true">◐</span>
+      </button>
+      <a class="btn btn-primary btn-sm" href="index.html#waitlist">Join the creator waitlist</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ── 1. Who we are ───────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">About us</p>
+      <h1>Made by people who make television.</h1>
+      <p class="lede">
+        Pellar comes from Veles Productions, a production studio in Warsaw. We build and run
+        broadcast graphics for live TV, and we make film, virtual-set and VR work for clients
+        who need it to hold up on air.
+      </p>
+    </div>
+    <div class="hero-vis">
+      <div class="frame frame-video">
+        <video autoplay muted loop playsinline aria-label="Veles Productions show reel">
+          <source src="assets/video/veles-reel.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="caption">Our showreel. Everything in it is in-house work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. What we work on ──────────────────────────────────── -->
+<section class="band">
+  <div class="wrap">
+    <h2>What we work on.</h2>
+    <p class="sub">Pellar is not a side project from people guessing what broadcast looks like.
+      It sits on top of the work the studio does every week.</p>
+
+    <ul class="sphere-grid">
+      <li>
+        <img loading="lazy" src="assets/proof/graphic-results.jpg" alt="Election night virtual studio with live results graphics">
+        <h3>Live broadcast graphics</h3>
+        <p>Score bars, results tables and full election-night packages, built in house and
+          played out live. The graphics on the front page are our working templates.</p>
+      </li>
+      <li>
+        <img loading="lazy" src="assets/proof/virtual-set.jpg" alt="Virtual election studio with candidate cards and a mandate count">
+        <h3>Virtual sets and studio</h3>
+        <p>We design virtual sets, light them, and run them from our own studio floor
+          and gallery.</p>
+      </li>
+      <li>
+        <img loading="lazy" src="assets/thumbs/thumb-film.jpg" alt="Commercial beauty shot from a Veles film production">
+        <h3>Film and video</h3>
+        <p>Commercial, documentary and training productions — shot, cut and delivered
+          in house.</p>
+      </li>
+      <li>
+        <img loading="lazy" src="assets/thumbs/thumb-vr.jpg" alt="Player riding a water course in a VR experience built by Veles">
+        <h3>VR and location-based experiences</h3>
+        <p>Multiplayer VR training and venue installations, from the headset build to the
+          floor layout.</p>
+      </li>
+      <li>
+        <img loading="lazy" src="assets/thumbs/thumb-ai.jpg" alt="Computer-generated forest scene from the Veles reel">
+        <h3>AI in production</h3>
+        <p>Generative video, voice and 3D pipelines, used inside real client work.
+          Veles Productions is a member of the NVIDIA Inception program.</p>
+      </li>
+      <li>
+        <img loading="lazy" src="assets/proof/control-room.jpg" alt="Gallery operator at a desk in front of a multiviewer wall">
+        <h3>Broadcast engineering</h3>
+        <p>The unglamorous part: playout, rendering and the plumbing that keeps graphics
+          on air when it counts.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── 3. Why Pellar ───────────────────────────────────────── -->
+<section class="band">
+  <div class="wrap narrow">
+    <h2>Why a broadcast studio is building a creator tool.</h2>
+    <p class="big">We know what a graphics package costs, because we quote them.</p>
+    <p>
+      A broadcast-grade package pays for a motion designer, a licence and weeks of back
+      and forth. That maths works for a network. It's absurd for one person with a stream.
+      Pellar takes the template craft from our broadcast work and sizes it for a single
+      presenter.
+    </p>
+    <p>
+      The studio keeps making television. Pellar is how the same kit reaches people
+      who don't have a gallery behind them.
+    </p>
+    <p><a class="btn btn-primary" href="index.html#waitlist">Join the creator waitlist</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <p><strong>Pellar</strong> — a Veles Productions product.</p>
+      <p class="micro">Sample data throughout. Graphics captured from the product on 3 August 2026.</p>
+    </div>
+    <div class="foot-nvidia">
+      <img src="assets/nvidia/nvidia-inception-program-badge-rgb-for-screen.svg"
+           alt="NVIDIA Inception program member badge" width="111" height="48">
+      <p class="micro">Veles Productions is a member of the NVIDIA Inception program.</p>
+    </div>
+    <p class="micro foot-legal">&copy; 2026 NVIDIA, the NVIDIA logo, and NVIDIA Inception are trademarks
+      and/or registered trademarks of NVIDIA Corporation in the U.S. and other countries.</p>
+  </div>
+</footer>
+
+<script src="app.js?v=20260810g"></script>
+</body>
+</html>
