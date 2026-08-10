@@ -268,7 +268,8 @@ p  { margin: 0 0 1.1em; color: var(--text-2); }
 
 /* Proof */
 .proof-hero { border: 1px solid var(--border); border-radius: var(--r-display); overflow: hidden; background: #000; }
-.proof-hero img { width: 100%; display: block; }
+.proof-hero img, .proof-hero video { width: 100%; display: block; }
+.frame-video video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
 .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
 @media (max-width: 860px) { .proof-grid { grid-template-columns: repeat(2, 1fr); } }
 .proof-grid figure { margin: 0; border: 1px solid var(--border); border-radius: var(--r-display); overflow: hidden; background: var(--surface-1); }
@@ -312,6 +313,7 @@ details p { margin: 0 0 1.2rem; font-size: .96rem; max-width: 68ch; }
 /* About page */
 .sphere-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; list-style: none; margin: 0; padding: 0; }
 .sphere-grid li { border-top: 2px solid var(--border); padding-top: 1.15rem; }
+.sphere-grid img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; border: 1px solid var(--border); border-radius: var(--r-display); margin-bottom: .95rem; }
 .sphere-grid h3 { margin-bottom: .4rem; }
 .sphere-grid p { margin: 0; font-size: .96rem; }
 @media (max-width: 700px) { .sphere-grid { grid-template-columns: 1fr; } }

@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260810a">
+<link rel="stylesheet" href="styles.css?v=20260810b">
 </head>
 <body>
 
@@ -75,15 +75,25 @@
 <main id="main">
 
 <!-- ── 1. Who we are ───────────────────────────────────────── -->
-<section class="band" id="top">
-  <div class="wrap narrow">
-    <p class="eyebrow">About us</p>
-    <h1>Made by people who make television.</h1>
-    <p class="lede">
-      Pellar comes from Veles Productions, a production studio in Warsaw. We build and run
-      broadcast graphics for live TV, and we make film, virtual-set and VR work for clients
-      who need it to hold up on air.
-    </p>
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">About us</p>
+      <h1>Made by people who make television.</h1>
+      <p class="lede">
+        Pellar comes from Veles Productions, a production studio in Warsaw. We build and run
+        broadcast graphics for live TV, and we make film, virtual-set and VR work for clients
+        who need it to hold up on air.
+      </p>
+    </div>
+    <div class="hero-vis">
+      <div class="frame frame-video">
+        <video autoplay muted loop playsinline aria-label="Veles Productions show reel">
+          <source src="assets/video/veles-reel.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="caption">Our showreel. Everything in it is in-house work.</p>
+    </div>
   </div>
 </section>
 
@@ -96,31 +106,37 @@
 
     <ul class="sphere-grid">
       <li>
+        <img loading="lazy" src="assets/proof/graphic-results.jpg" alt="Election night virtual studio with live results graphics">
         <h3>Live broadcast graphics</h3>
         <p>Score bars, results tables and full election-night packages, built in house and
           played out live. The graphics on the front page are our working templates.</p>
       </li>
       <li>
+        <img loading="lazy" src="assets/proof/virtual-set.jpg" alt="Virtual election studio with candidate cards and a mandate count">
         <h3>Virtual sets and studio</h3>
         <p>We design virtual sets, light them, and run them from our own studio floor
           and gallery.</p>
       </li>
       <li>
+        <img loading="lazy" src="assets/thumbs/thumb-film.jpg" alt="Commercial beauty shot from a Veles film production">
         <h3>Film and video</h3>
         <p>Commercial, documentary and training productions — shot, cut and delivered
           in house.</p>
       </li>
       <li>
+        <img loading="lazy" src="assets/thumbs/thumb-vr.jpg" alt="Player riding a water course in a VR experience built by Veles">
         <h3>VR and location-based experiences</h3>
         <p>Multiplayer VR training and venue installations, from the headset build to the
           floor layout.</p>
       </li>
       <li>
+        <img loading="lazy" src="assets/thumbs/thumb-ai.jpg" alt="Computer-generated forest scene from the Veles reel">
         <h3>AI in production</h3>
         <p>Generative video, voice and 3D pipelines, used inside real client work.
           Veles Productions is a member of the NVIDIA Inception program.</p>
       </li>
       <li>
+        <img loading="lazy" src="assets/proof/control-room.jpg" alt="Gallery operator at a desk in front of a multiviewer wall">
         <h3>Broadcast engineering</h3>
         <p>The unglamorous part: playout, rendering and the plumbing that keeps graphics
           on air when it counts.</p>
@@ -166,6 +182,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=20260810a"></script>
+<script src="app.js?v=20260810b"></script>
 </body>
 </html>
