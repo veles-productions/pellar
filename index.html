@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260810b">
+<link rel="stylesheet" href="styles.css?v=20260810c">
 </head>
 <body>
 
@@ -101,16 +101,18 @@
       </ul>
     </div>
 
-    <!-- The product in situ: a stream frame with real graphics on it -->
-    <div class="hero-vis" aria-label="A stream frame with two Pellar graphics on it">
-      <div class="frame">
+    <!-- The product in situ: a stream frame with real graphics over footage -->
+    <div class="hero-vis" aria-label="A stream frame with two Pellar graphics over a stadium shot">
+      <div class="frame has-plate">
+        <img class="plate" src="assets/backplates/stadium.jpg" alt="" aria-hidden="true">
         <div class="frame-bar"><span class="dot live"></span> LIVE</div>
         <img class="g-center" src="assets/graphics/sport-matchstats.webp" alt="Animated match statistics graphic: possession, shots, corners"
              width="912" height="528" data-still="assets/graphics/sport-matchstats.png">
         <img class="g-lower" src="assets/graphics/sport-scorebug.webp" alt="Animated score bar showing the match score and clock"
              width="618" height="186" data-still="assets/graphics/sport-scorebug.png">
       </div>
-      <p class="caption">Working Pellar templates rendered with sample data. These are not mockups.</p>
+      <p class="caption">Working Pellar templates rendered with sample data, composited over a stand-in
+        stadium frame. The graphics are not mockups.</p>
     </div>
   </div>
 </section>
@@ -157,13 +159,19 @@
   </div>
 </section>
 
-<!-- ── 3. The problem ──────────────────────────────────────── -->
-<section class="band">
+<!-- ── 3. The problem (over control-room footage) ──────────── -->
+<section class="band band-bg">
+  <div class="band-media" aria-hidden="true">
+    <video autoplay muted loop playsinline poster="assets/proof/controlroom-poster.jpg">
+      <source src="assets/video/controlroom.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="wrap narrow">
     <h2 class="statement">
       A chart like that normally means a motion designer, a broadcast graphics licence,
       and a wait. <span class="dim">So most streams show a screenshot of a spreadsheet instead.</span>
     </h2>
+    <p class="micro band-media-note">Behind this text: our gallery, mid-production.</p>
   </div>
 </section>
 
@@ -197,11 +205,15 @@
   <div class="wrap">
     <h2>Working templates, rendered with sample data.</h2>
     <p class="sub">Every graphic below was rendered from the product and captured frame by frame.
-      Nothing here is a mockup. All data is sample data.</p>
+      The graphics are not mockups; all data is sample data. The frames behind them are stand-in
+      footage, there to show how a graphic sits over a broadcast.</p>
 
+    <!-- Backplates: stadium/gaming/homestudio generated in house; markets photo by
+         Anne Nygård, creator desk photo by TheRegisti, both via Unsplash (placeholders
+         pending final design). -->
     <div class="grid">
       <figure class="card">
-        <div class="card-vis"><img loading="lazy" src="assets/graphics/sport-matchstats.webp"
+        <div class="card-vis has-plate"><img class="plate" loading="lazy" src="assets/backplates/stadium.jpg" alt="" aria-hidden="true"><img loading="lazy" src="assets/graphics/sport-matchstats.webp"
           alt="Match statistics: possession, shots, on target, corners and fouls animating in"
           width="912" height="528" data-still="assets/graphics/sport-matchstats.png"></div>
         <figcaption><span class="tag">Sport</span><strong>Match stats</strong>
@@ -209,7 +221,7 @@
       </figure>
 
       <figure class="card">
-        <div class="card-vis"><img loading="lazy" src="assets/graphics/markets-bar.webp"
+        <div class="card-vis has-plate"><img class="plate" loading="lazy" src="assets/backplates/markets.jpg" alt="" aria-hidden="true"><img loading="lazy" src="assets/graphics/markets-bar.webp"
           alt="Market index strip showing three indices with values and percentage changes"
           width="956" height="248" data-still="assets/graphics/markets-bar.png"></div>
         <figcaption><span class="tag">Markets</span><strong>Index strip</strong>
@@ -217,7 +229,7 @@
       </figure>
 
       <figure class="card">
-        <div class="card-vis"><img loading="lazy" src="assets/graphics/affairs-election.webp"
+        <div class="card-vis has-plate"><img class="plate" loading="lazy" src="assets/proof/studio-floor.jpg" alt="" aria-hidden="true"><img loading="lazy" src="assets/graphics/affairs-election.webp"
           alt="Election results table with four candidates, percentage bars and a reporting line"
           width="1012" height="608" data-still="assets/graphics/affairs-election.png"></div>
         <figcaption><span class="tag">Current affairs</span><strong>Results table</strong>
@@ -225,7 +237,7 @@
       </figure>
 
       <figure class="card">
-        <div class="card-vis"><img loading="lazy" src="assets/graphics/affairs-poll.webp"
+        <div class="card-vis has-plate"><img class="plate" loading="lazy" src="assets/backplates/homestudio.jpg" alt="" aria-hidden="true"><img loading="lazy" src="assets/graphics/affairs-poll.webp"
           alt="Poll comparison graphic with paired bars split across three age groups"
           width="812" height="472" data-still="assets/graphics/affairs-poll.png"></div>
         <figcaption><span class="tag">Current affairs</span><strong>Poll comparison</strong>
@@ -233,7 +245,7 @@
       </figure>
 
       <figure class="card">
-        <div class="card-vis"><img loading="lazy" src="assets/graphics/esports-standings.webp"
+        <div class="card-vis has-plate"><img class="plate" loading="lazy" src="assets/backplates/gaming.jpg" alt="" aria-hidden="true"><img loading="lazy" src="assets/graphics/esports-standings.webp"
           alt="League standings table with played, won, drawn, lost, goal difference and points"
           width="1212" height="524" data-still="assets/graphics/esports-standings.png"></div>
         <figcaption><span class="tag">Gaming and esports</span><strong>League table</strong>
@@ -241,7 +253,7 @@
       </figure>
 
       <figure class="card">
-        <div class="card-vis"><img loading="lazy" src="assets/graphics/creator-counter.webp"
+        <div class="card-vis has-plate"><img class="plate" loading="lazy" src="assets/backplates/creatordesk.jpg" alt="" aria-hidden="true"><img loading="lazy" src="assets/graphics/creator-counter.webp"
           alt="Large animated counter climbing to a subscriber total"
           width="612" height="378" data-still="assets/graphics/creator-counter.png"></div>
         <figcaption><span class="tag">Any channel</span><strong>Counter</strong>
@@ -251,8 +263,11 @@
   </div>
 </section>
 
-<!-- ── 5b. The interface ───────────────────────────────────── -->
-<section class="band interface" id="interface">
+<!-- ── 5b. The interface (over studio-camera footage) ──────── -->
+<section class="band interface band-bg" id="interface">
+  <div class="band-media" aria-hidden="true">
+    <img loading="lazy" src="assets/proof/studio-camera.jpg" alt="">
+  </div>
   <div class="wrap narrow">
     <h2>We deleted the menus on purpose.</h2>
     <p class="big">
@@ -303,12 +318,8 @@
     </p>
 
     <div class="proof-hero">
-      <video autoplay muted loop playsinline poster="assets/proof/controlroom-poster.jpg"
-             aria-label="Inside the Veles gallery and studio floor during a live production">
-        <source src="assets/video/controlroom.mp4" type="video/mp4">
-      </video>
+      <img src="assets/proof/graphic-results.jpg" alt="Election night virtual studio with live results graphics">
     </div>
-    <p class="caption">The gallery and studio floor, mid-production. Shot on a phone, because it's a workplace.</p>
 
     <div class="proof-grid">
       <figure><img loading="lazy" src="assets/proof/virtual-set.jpg" alt="Virtual election studio with candidate cards and a mandate count">
@@ -403,6 +414,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=20260810b"></script>
+<script src="app.js?v=20260810c"></script>
 </body>
 </html>
