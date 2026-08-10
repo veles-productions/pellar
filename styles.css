@@ -337,8 +337,11 @@ p  { margin: 0 0 1.1em; color: var(--text-2); }
 }
 .voice > .wrap { position: relative; }
 .voice-in { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-.voice-orb { width: 100%; max-width: 400px; height: auto; justify-self: center; mix-blend-mode: screen; }
-html.light .voice-orb { mix-blend-mode: normal; border-radius: var(--r-lg); }
+.voice-orb { width: 100%; max-width: 400px; height: auto; justify-self: center; mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(72% 72% at 50% 52%, #000 52%, transparent 97%);
+  mask-image: radial-gradient(72% 72% at 50% 52%, #000 52%, transparent 97%); }
+html.light .voice-orb { mix-blend-mode: normal; border-radius: var(--r-lg);
+  -webkit-mask-image: none; mask-image: none; }
 @media (max-width: 860px) {
   .voice-in { grid-template-columns: 1fr; }
   .voice-orb { max-width: 280px; }
