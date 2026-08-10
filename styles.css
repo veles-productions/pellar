@@ -325,6 +325,17 @@ p  { margin: 0 0 1.1em; color: var(--text-2); }
 
 /* Voice + interface story */
 .voice .big, .interface .big { font-size: clamp(1.1rem, 2.1vw, 1.4rem); color: var(--text-1); line-height: 1.45; max-width: 44ch; }
+
+/* Hourglass glow: the page runs dark, brightens around the voice
+   interface, then returns to dark. */
+.voice { position: relative; overflow: hidden; }
+.voice::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(62% 50% at 50% -16%, color-mix(in srgb, var(--blue) 36%, transparent), transparent 70%),
+    radial-gradient(62% 50% at 50% 116%, color-mix(in srgb, var(--blue) 24%, transparent), transparent 70%);
+}
+.voice > .wrap { position: relative; }
 .vquote {
   margin: 2.2rem 0 0; padding: 1.15rem 1.4rem;
   border-left: 2px solid var(--blue); background: var(--surface-1);
