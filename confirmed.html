@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're on the list — Pellar</title>
+<meta name="description" content="Waitlist confirmation page for Pellar.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#050810">
+<link rel="icon" href="assets/pellar-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260810g">
+</head>
+<body>
+<!-- No access gate on this page: people land here from the confirmation
+     email, which can outlive the pre-launch password. Nothing confidential
+     lives here. -->
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="Pellar home">
+      <img src="assets/pellar-icon.png" alt="" width="28" height="28">
+      <span>Pellar</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="band cta">
+    <div class="wrap narrow center" id="state-ok">
+      <h1>You're on the list.</h1>
+      <p class="sub">We'll email you before sign-ups open. That's the only kind of email this list gets.</p>
+      <p><a class="btn btn-primary" href="index.html">Back to Pellar</a></p>
+    </div>
+    <div class="wrap narrow center" id="state-invalid" hidden>
+      <h1>That link didn't work.</h1>
+      <p class="sub">Confirmation links last 48 hours, so it has probably expired. Sign up again and we'll send a fresh one.</p>
+      <p><a class="btn btn-primary" href="index.html#waitlist">Sign up again</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <p><strong>Pellar</strong> — a Veles Productions product. <a href="about.html">About us</a> · <a href="privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  if (new URLSearchParams(location.search).get('status') === 'invalid') {
+    document.getElementById('state-ok').hidden = true;
+    document.getElementById('state-invalid').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>

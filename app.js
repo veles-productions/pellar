@@ -37,8 +37,10 @@
 
   /* ── Waitlist ───────────────────────────────────────────
      Posts to the n8n webhook (workflow "Pellar Waitlist Capture" on
-     n8n.moonacle.com), which validates the address and emails each signup
-     to the team via Resend. The endpoint answers CORS preflights itself. */
+     n8n.moonacle.com). Double opt-in: the webhook stores a pending
+     signup and emails a 48-hour confirmation link; only a confirmed
+     click subscribes the address. The endpoint answers CORS preflights
+     itself. */
   var ENDPOINT = 'https://n8n.moonacle.com/webhook/pellar-waitlist';
   var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -68,7 +70,7 @@
         body: JSON.stringify({ email: value, segment: seg ? seg.value : '', page: location.pathname })
       }).then(function (res) {
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        msg.textContent = 'You are on the list. We will write before sign-ups open.';
+        msg.textContent = 'Almost there — check your inbox for the confirmation link.';
         input.value = '';
         if (seg) seg.selectedIndex = 0;
       }).catch(function () {
