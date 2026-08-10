@@ -257,8 +257,8 @@ p  { margin: 0 0 1.1em; color: var(--text-2); }
 }
 .tag-accent { color: var(--blue); margin-bottom: 1rem; }
 
-/* Voice */
-.voice .big { font-size: clamp(1.1rem, 2.1vw, 1.4rem); color: var(--text-1); line-height: 1.45; max-width: 44ch; }
+/* Voice + interface story */
+.voice .big, .interface .big { font-size: clamp(1.1rem, 2.1vw, 1.4rem); color: var(--text-1); line-height: 1.45; max-width: 44ch; }
 .vquote {
   margin: 2.2rem 0 0; padding: 1.15rem 1.4rem;
   border-left: 2px solid var(--blue); background: var(--surface-1);
@@ -300,7 +300,21 @@ details p { margin: 0 0 1.2rem; font-size: .96rem; max-width: 68ch; }
 /* CTA + footer */
 .cta { background: var(--surface-1); }
 .foot { border-top: 1px solid var(--border); padding-block: 2.2rem; }
+.foot-in { display: flex; flex-wrap: wrap; gap: 1.4rem 3rem; align-items: flex-start; justify-content: space-between; }
 .foot-in p { margin: 0 0 .3rem; font-size: .9rem; color: var(--text-2); }
+.foot-brand a { color: var(--text-2); }
+.foot-brand a:hover { color: var(--text-1); }
+.foot-nvidia { display: flex; align-items: center; gap: .9rem; }
+.foot-nvidia img { width: auto; height: 48px; flex: 0 0 auto; }
+.foot-nvidia .micro { margin: 0; max-width: 24ch; }
+.foot-legal { flex: 1 0 100%; margin: .4rem 0 0; font-size: .72rem; }
+
+/* About page */
+.sphere-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; list-style: none; margin: 0; padding: 0; }
+.sphere-grid li { border-top: 2px solid var(--border); padding-top: 1.15rem; }
+.sphere-grid h3 { margin-bottom: .4rem; }
+.sphere-grid p { margin: 0; font-size: .96rem; }
+@media (max-width: 700px) { .sphere-grid { grid-template-columns: 1fr; } }
 
 @media (max-width: 860px) {
   .nav-in { flex-wrap: wrap; gap: .35rem .8rem; padding-block: .35rem; }

@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260803b">
+<link rel="stylesheet" href="styles.css?v=20260810a">
 </head>
 <body>
 
@@ -61,6 +61,7 @@
       <a href="#voice">Voice</a>
       <a href="#early-access">Early access</a>
       <a href="#questions">Questions</a>
+      <a href="about.html">About</a>
     </nav>
     <div class="nav-right">
       <button class="theme-btn" id="theme" type="button" aria-label="Switch colour theme">
@@ -77,11 +78,12 @@
 <section class="hero" id="top">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <p class="eyebrow">Broadcast graphics for one-person streams</p>
-      <h1>Make live stats look like television.</h1>
+      <p class="eyebrow">For one-person streams</p>
+      <h1>Broadcast graphics without the menus.</h1>
       <p class="lede">
-        Pellar turns scores, polls, market moves and standings into animated broadcast graphics.
-        Pick a real template, type the numbers in, then add it to your stream when closed beta opens.
+        Make live scores, polls, market moves and standings look like television.
+        You tell Pellar what changed — typed today, spoken soon — and a working
+        broadcast template animates in your scene. No design app. No menu tree.
       </p>
 
       <form class="signup" data-waitlist novalidate>
@@ -249,6 +251,28 @@
   </div>
 </section>
 
+<!-- ── 5b. The interface ───────────────────────────────────── -->
+<section class="band interface" id="interface">
+  <div class="wrap narrow">
+    <h2>We deleted the menus on purpose.</h2>
+    <p class="big">
+      The first Pellar was professional newsroom software. Playlists, players,
+      integrations, and a menu for each. Watching real editors use it taught us an
+      uncomfortable lesson: every menu is a place to get stuck.
+    </p>
+    <p class="big">
+      So we rebuilt it around one input. You tell Pellar what you want on screen,
+      and it fills the template. That interface is the product. The templates are
+      what it's made of.
+    </p>
+    <p>
+      The newsroom that tried the rebuilt version called it a toy on day one.
+      Within days it was part of how they worked. That's the version we're now
+      sizing down for creators.
+    </p>
+  </div>
+</section>
+
 <!-- ── 6. Voice ────────────────────────────────────────────── -->
 <section class="band voice" id="voice">
   <div class="wrap narrow">
@@ -361,8 +385,17 @@
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <p><strong>Pellar</strong> — a Veles Productions product.</p>
-    <p class="micro">Sample data throughout. Graphics captured from the product on 3 August 2026.</p>
+    <div class="foot-brand">
+      <p><strong>Pellar</strong> — a Veles Productions product. <a href="about.html">About us</a></p>
+      <p class="micro">Sample data throughout. Graphics captured from the product on 3 August 2026.</p>
+    </div>
+    <div class="foot-nvidia">
+      <img src="assets/nvidia/nvidia-inception-program-badge-rgb-for-screen.svg"
+           alt="NVIDIA Inception program member badge" width="111" height="48">
+      <p class="micro">Veles Productions is a member of the NVIDIA Inception program.</p>
+    </div>
+    <p class="micro foot-legal">&copy; 2026 NVIDIA, the NVIDIA logo, and NVIDIA Inception are trademarks
+      and/or registered trademarks of NVIDIA Corporation in the U.S. and other countries.</p>
   </div>
 </footer>
 
