@@ -110,12 +110,40 @@
       ScrollTrigger.create({
         trigger: '.band-scrub',
         start: 'top top',
-        end: '+=140%',
+        end: '+=80%',
         pin: true,
         scrub: 0.6,
         onUpdate: function (self) {
           if (scrubVid.duration) {
             scrubVid.currentTime = self.progress * (scrubVid.duration - 0.05);
+          }
+        }
+      });
+    }
+  }
+
+  /* Scroll-scrubbed orb: scrolling through the voice section makes the
+     orb pulse and project the poll hologram — ask, and it appears. */
+  var orbVid = document.querySelector('video.voice-orb');
+  if (orbVid) {
+    orbVid.pause();
+    var orbReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var orbEnd = function () {
+      if (orbVid.duration) orbVid.currentTime = Math.max(0, orbVid.duration - 0.05);
+    };
+    if (orbReduced || !window.gsap || !window.ScrollTrigger) {
+      if (orbVid.readyState >= 1) orbEnd();
+      else orbVid.addEventListener('loadedmetadata', orbEnd);
+    } else {
+      gsap.registerPlugin(ScrollTrigger);
+      ScrollTrigger.create({
+        trigger: '.voice',
+        start: 'top 80%',
+        end: 'top 5%',
+        scrub: 0.5,
+        onUpdate: function (self) {
+          if (orbVid.duration) {
+            orbVid.currentTime = self.progress * (orbVid.duration - 0.05);
           }
         }
       });

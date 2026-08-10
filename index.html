@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260810f">
+<link rel="stylesheet" href="styles.css?v=20260810g">
 </head>
 <body>
 
@@ -126,8 +126,8 @@
   </div>
   <div class="wrap narrow">
     <h2 class="statement">
-      <span class="dim">We used to have to hire a motion designer and wait to get this chart.</span>
-      Now we just speak it onto the screen.
+      <span class="dim">We used to have to hire a motion designer and wait to get this chart.</span><br>
+      Now we just <em>speak it</em> onto the screen.
     </h2>
   </div>
 </section>
@@ -149,8 +149,11 @@
         and we will not call it ready until a creator can use it reliably on air.
       </p>
     </div>
-    <img class="voice-orb" src="assets/art/hand-orb.webp" width="900" height="1125"
-         alt="A hand reaching toward a small glowing orb" loading="lazy">
+    <video class="voice-orb" muted playsinline preload="auto"
+           poster="assets/art/orb-poll-poster.jpg" width="720" height="960"
+           aria-label="A hand and a glowing orb; the orb projects a poll graphic as you scroll">
+      <source src="assets/video/orb-poll.mp4" type="video/mp4">
+    </video>
   </div>
 </section>
 
@@ -463,6 +466,6 @@
 
 <script src="assets/vendor/gsap.min.js"></script>
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
-<script src="app.js?v=20260810f"></script>
+<script src="app.js?v=20260810g"></script>
 </body>
 </html>

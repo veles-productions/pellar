@@ -352,7 +352,7 @@ html.light .voice-orb { mix-blend-mode: normal; border-radius: var(--r-lg);
 .steps .ico { margin-top: .1rem; }
 
 /* Scroll-scrub stage: the studio lights come on as you scroll */
-.band-scrub { min-height: 92vh; display: flex; align-items: center; }
+.band-scrub { min-height: 56vh; display: flex; align-items: center; }
 .vquote {
   margin: 2.2rem 0 0; padding: 1.15rem 1.4rem;
   border-left: 2px solid var(--blue); background: var(--surface-1);
