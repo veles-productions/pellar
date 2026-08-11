@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pellar — say it, put it on screen</title>
+<meta name="description" content="Pellar turns a spoken update into a live broadcast graphic. A verified template library, rendered in real time, into your stream or your control room.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/pellar-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="sales-page-v8.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <a class="brand" href="#top" aria-label="Pellar — top of page">
+    <img class="logo" src="assets/pellar-logo.png" alt="Pellar">
+  </a>
+
+  <div class="bar-right">
+    <nav class="seg nav-links" aria-label="Page sections">
+      <a href="#system">Templates</a>
+      <a href="#verify">Verify</a>
+      <a href="#chain">Broadcast</a>
+      <a href="#stream-path">Stream</a>
+      <a href="#origin">Who builds it</a>
+    </nav>
+
+    <button class="switch" id="theme-knob" type="button" role="switch"
+            aria-checked="false" aria-label="Light theme">
+      <span class="plate-sw"><span class="rocker"></span><span class="led"></span></span>
+    </button>
+
+    <a class="key" href="#waitlist"><span>Join early access</span><i aria-hidden="true"></i></a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ══ 1. HERO — v3's shape: big type left, the machine right ══
+     The product is visible in the first screen instead of three
+     screens down, which is what made the v3 hero land. -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+
+    <div class="hero-copy">
+      <p class="signal"><i aria-hidden="true"></i> Voice control is live</p>
+      <h1 class="disp">Say it.<br><span>Put it on screen.</span></h1>
+      <p class="lede">A pre-rendered graphic is baked &mdash; changing one digit means After
+        Effects and a re-export, three minutes while you are on air. Pellar renders from a
+        verified template library, live.</p>
+
+      <div class="hero-cta">
+        <a class="key" href="#waitlist"><span>Join early access</span><i aria-hidden="true"></i></a>
+        <a class="plain-link" href="#system">See the templates <b aria-hidden="true">&darr;</b></a>
+      </div>
+
+      <dl class="status-rail">
+        <div><dt>Template library</dt><dd><i class="on"></i> Working</dd></div>
+        <div><dt>Verify step</dt><dd><i class="on"></i> Working</dd></div>
+        <div><dt>Voice control</dt><dd><i class="on"></i> Live</dd></div>
+        <div><dt>Local models</dt><dd><i class="test"></i> In testing</dd></div>
+      </dl>
+    </div>
+
+    <!-- The machine: a live scene with a real template over it, and the
+         voice console underneath. Carried over from v3, rebuilt in
+         Pellar's own palette. -->
+    <div class="machine rise">
+      <div class="machine-top">
+        <span>Pellar / live scene</span>
+        <span class="tc" id="machine-tc">00:42:17:08</span>
+      </div>
+
+      <!-- Stadium plate on purpose: it is dark and uncluttered, so a white
+           graphic reads. Studio plates already have screens in them and the
+           composite turns to mud. -->
+      <div class="safe scene">
+        <img class="plate" src="assets/backplates/stadium.jpg" alt="" aria-hidden="true">
+        <span class="veil-soft" aria-hidden="true"></span>
+        <span class="on-air"><i aria-hidden="true"></i> On air</span>
+        <img class="g-center" src="assets/graphics/sport-matchstats-alpha.webp"
+             data-still="assets/graphics/sport-matchstats.png"
+             alt="A match statistics graphic animating on the live output">
+        <span class="sample">Sample data</span>
+        <span class="brackets hot" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </div>
+
+      <div class="voice-console">
+        <span class="orb" aria-hidden="true"></span>
+        <div class="readout">
+          <span class="label">Heard</span>
+          <strong data-command>&ldquo;Show the match stats.&rdquo;</strong>
+          <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        </div>
+        <div class="commit">
+          <span class="label">Intent</span>
+          <strong>SHOW_GRAPHIC</strong>
+          <span class="sent"><i aria-hidden="true"></i> Sent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="wrap hero-proof">Built by <strong>Veles Productions</strong> &mdash; we make virtual
+    studios and live graphics for television.</p>
+</section>
+
+<!-- ══ 2. FORK ══════════════════════════════════════════════ -->
+<section class="pad-s" aria-labelledby="fork-h">
+  <div class="wrap">
+    <div class="eyebrow"><span>Which of these is you</span></div>
+    <h2 class="vh" id="fork-h">Who Pellar is for</h2>
+
+    <div class="fork">
+      <a class="fork-card rise" href="#stream-path">
+        <span class="shot">
+          <img src="assets/backplates/homestudio.jpg" loading="lazy"
+               alt="A creator at a home streaming desk with a ring light, boom mic and headphones">
+        </span>
+        <span class="body">
+          <span class="label">Streamers &amp; creators</span>
+          <h3 class="disp">Stream</h3>
+          <p>One operator, one machine, no time to open After Effects. Scorebugs, polls and
+             counters that update while you keep talking.</p>
+          <span class="go">The creator path <b aria-hidden="true">&darr;</b></span>
+        </span>
+      </a>
+
+      <a class="fork-card rise" href="#chain">
+        <span class="shot">
+          <img src="assets/proof/control-room.jpg" loading="lazy"
+               alt="Two operators at a television control-room desk lit by their monitors">
+        </span>
+        <span class="body">
+          <span class="label">Broadcasters</span>
+          <h3 class="disp">Broadcast</h3>
+          <p>A template library your designers own, a verify step before air, and roles that
+             match the people already in your gallery.</p>
+          <span class="go">The control-room path <b aria-hidden="true">&darr;</b></span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. TEMPLATES — and it has to be obvious it is clickable ══ -->
+<section class="pad" id="system" aria-labelledby="system-h">
+  <div class="wrap">
+    <div class="eyebrow"><span>01 &mdash; The library</span></div>
+    <div class="sec-head rise">
+      <h2 class="disp" id="system-h">Broadcast graphics.<br>No blank canvas.</h2>
+      <p>Lower thirds, maps, tables, charts, scorebugs. Each is built once as a function, then
+        reskinned to your brand.</p>
+    </div>
+
+    <div class="console-wrap rise">
+      <div class="template-console">
+        <!-- The instruction is on the component, not in a paragraph three
+             lines above it. Without this nobody knew it could be clicked. -->
+        <div class="menu-head">
+          <span class="label">Pick a family</span>
+          <span class="hint" aria-hidden="true">Click to swap the template &rarr;</span>
+        </div>
+        <div class="template-menu" role="tablist" aria-label="Template families">
+          <button type="button" role="tab" id="tab-sport" aria-selected="true"
+                  aria-controls="stage" data-template="sport" class="active">
+            <i aria-hidden="true"></i> Sport
+          </button>
+          <button type="button" role="tab" id="tab-markets" aria-selected="false"
+                  aria-controls="stage" data-template="markets" tabindex="-1">
+            <i aria-hidden="true"></i> Markets
+          </button>
+          <button type="button" role="tab" id="tab-affairs" aria-selected="false"
+                  aria-controls="stage" data-template="affairs" tabindex="-1">
+            <i aria-hidden="true"></i> Current affairs
+          </button>
+          <button type="button" role="tab" id="tab-esports" aria-selected="false"
+                  aria-controls="stage" data-template="esports" tabindex="-1">
+            <i aria-hidden="true"></i> Esports
+          </button>
+        </div>
+
+        <div class="safe stage" id="stage" role="tabpanel" aria-labelledby="tab-sport" tabindex="0">
+          <img class="plate" data-stage-plate src="assets/backplates/stadium.jpg" alt="" aria-hidden="true">
+          <span class="veil-soft" aria-hidden="true"></span>
+          <div class="frame-bar"><span class="dot"></span> <span data-stage-label>Sport / Match stats</span></div>
+          <img class="g-center" data-stage-output
+               src="assets/graphics/sport-matchstats-alpha.webp"
+               data-still="assets/graphics/sport-matchstats.png"
+               alt="Match statistics template animating with possession, shots and corners">
+          <span class="brackets" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <img class="bug" src="assets/pellar-logo.png" alt="" aria-hidden="true">
+          <div class="stage-say">
+            <span class="label">Or just say</span>
+            <strong data-stage-command>&ldquo;Show the match stats.&rdquo;</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="p-head">
+          <span class="grip" aria-hidden="true"></span>
+          <span class="p-title">Pellar &mdash; Studio</span>
+          <span class="spacer"></span>
+          <span class="chip" aria-hidden="true">&#8635;</span>
+          <span class="chip me" aria-hidden="true">S</span>
+        </div>
+        <div class="p-body">
+          <div class="msg">
+            <div class="from">Pellar</div>
+            <div class="bubble">Say or type what you want on screen.</div>
+          </div>
+          <div class="msg me">
+            <div class="from">Operator</div>
+            <div class="bubble">Show the match stats.</div>
+          </div>
+          <div class="msg">
+            <div class="from">Pellar</div>
+            <div class="bubble">Match stats loaded with the current values. Ready in preview.</div>
+            <div class="ago">just now</div>
+          </div>
+        </div>
+        <div class="p-input">
+          <span class="orb" aria-hidden="true"></span>
+          <span class="field">Say or type&hellip;</span>
+          <span class="send" aria-hidden="true">&#10148;</span>
+        </div>
+        <!-- PREVIEW scrubber only. Playout does not exist. -->
+        <div class="transport">
+          <div class="row">
+            <span class="play" aria-hidden="true">&#9654;</span>
+            <span class="bar" aria-hidden="true"><i></i></span>
+          </div>
+          <div class="meta">
+            <span class="tc">00:00:00 <em>/ 00:05:00</em></span>
+            <span class="tag">Preview</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="caption">Real Pellar templates rendering with sample data over stand-in footage.
+      Not mockups &mdash; that is them running.</p>
+
+    <!-- Each of these used to be a bare text box. Each now shows the thing
+         it is talking about. -->
+    <div class="bento" style="margin-top:3rem">
+      <div class="cell rise">
+        <div class="cell-vis">
+          <img class="plate" loading="lazy" src="assets/backplates/stadium.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" src="assets/graphics/sport-scorebug.webp"
+               data-still="assets/graphics/sport-scorebug.png"
+               alt="A scorebug updating its score live">
+        </div>
+        <div class="cell-body">
+          <span class="label">01 &mdash; Data</span>
+          <h3>The number changes,<br>the graphic changes</h3>
+          <p>Nothing is baked in. A correction costs a sentence, not a re-export.</p>
+        </div>
+      </div>
+      <div class="cell rise">
+        <div class="cell-vis">
+          <img class="plate" loading="lazy" src="assets/backplates/markets.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" src="assets/graphics/markets-bar.webp"
+               data-still="assets/graphics/markets-bar.png"
+               alt="The same bar template carrying a different brand skin">
+        </div>
+        <div class="cell-body">
+          <span class="label">02 &mdash; Brand</span>
+          <h3>Your brand book,<br>not ours</h3>
+          <p>One function, a different skin per client. Your designer guarantees the pixels.</p>
+        </div>
+      </div>
+      <div class="cell rise">
+        <div class="cell-vis">
+          <img class="plate" loading="lazy" src="assets/backplates/creatordesk.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" src="assets/graphics/creator-counter.webp"
+               data-still="assets/graphics/creator-counter.png"
+               alt="A counter graphic being driven from the desk">
+        </div>
+        <div class="cell-body">
+          <span class="label">03 &mdash; Control</span>
+          <h3>Hands stay<br>where they are</h3>
+          <p>Voice, text or the panel &mdash; whichever is fastest in the moment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. BAND ══════════════════════════════════════════════ -->
+<section class="band" aria-labelledby="band-h">
+  <img src="assets/proof/studio-camera.jpg" alt="" aria-hidden="true">
+  <span class="veil" aria-hidden="true"></span>
+  <div class="inner rise">
+    <h2 class="disp" id="band-h">Dead air is survivable.<br>A wrong number is not.</h2>
+    <p>A gap on screen is a bad night. A figure nobody checked, broadcast under your name, is a
+      correction and a clip that outlives the bulletin.</p>
+  </div>
+</section>
+
+<!-- ══ 5. VERIFY — now shows the check happening ════════════ -->
+<section class="pad" id="verify" aria-labelledby="verify-h">
+  <div class="wrap">
+    <div class="eyebrow"><span>02 &mdash; Before it reaches air</span></div>
+    <div class="sec-head rise">
+      <h2 class="disp" id="verify-h">Every template<br>passes verify</h2>
+      <p>Formatting, overflow, safe area, and whether it conforms to the standard the rest of
+        your library is built on. Nothing reaches the live system unchecked.</p>
+    </div>
+
+    <div class="verify-view rise">
+      <!-- The template under inspection, with the safe-area guides that are
+           actually being checked drawn over it. -->
+      <!-- No scene plate here on purpose: verify inspects the template, not
+           the composite. A clean canvas is both truer to what the check
+           actually does and the only way the safe-area guides read. -->
+      <div class="safe verify-frame">
+        <img class="g-center" src="assets/graphics/affairs-election-alpha.webp"
+             data-still="assets/graphics/affairs-election.png"
+             alt="An election results template being checked against the safe area">
+        <span class="guide title" aria-hidden="true"><em>Title safe</em></span>
+        <span class="guide action" aria-hidden="true"><em>Action safe</em></span>
+        <div class="frame-bar"><span class="dot ok"></span> Checking &middot; Election results v4</div>
+        <img class="bug" src="assets/pellar-logo.png" alt="" aria-hidden="true">
+      </div>
+
+      <!-- The verify panel, in the same material as the operator panel. -->
+      <div class="panel verify-panel">
+        <div class="p-head">
+          <span class="grip" aria-hidden="true"></span>
+          <span class="p-title">Verify</span>
+          <span class="spacer"></span>
+          <span class="stamp">Passed</span>
+        </div>
+        <ul class="checks">
+          <li><span class="tick" aria-hidden="true">&#10003;</span>
+            <span class="nm">Formatting</span><span class="note">Type, spacing, weights</span></li>
+          <li><span class="tick" aria-hidden="true">&#10003;</span>
+            <span class="nm">Overflow</span><span class="note">No string breaks the box</span></li>
+          <li><span class="tick" aria-hidden="true">&#10003;</span>
+            <span class="nm">Safe area</span><span class="note">Inside title and action safe</span></li>
+          <li><span class="tick" aria-hidden="true">&#10003;</span>
+            <span class="nm">Standard</span><span class="note">Matches the library spec</span></li>
+        </ul>
+        <div class="verify-foot">
+          <span class="readout">Runs on upload</span>
+          <span class="readout">Logged against the template</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="caption">The check is also a record &mdash; what was verified, and when. We describe
+      the verification step; we do not claim compliance on your behalf.</p>
+  </div>
+</section>
+
+<!-- ══ 6. THE CHAIN — over the room it belongs in ═══════════ -->
+<section class="chain-band" id="chain" aria-labelledby="chain-h">
+  <img src="assets/proof/control-room.jpg" alt="" aria-hidden="true">
+  <span class="veil" aria-hidden="true"></span>
+  <div class="wrap chain-inner">
+    <div class="eyebrow light"><span>03 &mdash; The control-room path</span></div>
+    <div class="sec-head rise">
+      <h2 class="disp" id="chain-h">It fits the gallery<br>you already run</h2>
+      <p>An operator builds it. An editor checks it. A vision mixer takes it. Each gets the
+        permissions that match what they already do.</p>
+    </div>
+
+    <ol class="chain-list rise">
+      <li>
+        <span class="pos">01</span>
+        <span class="step">Operator</span>
+        <h3>Builds and cues</h3>
+        <p>Drives the panel by voice, text or hand. Sees preview first.</p>
+      </li>
+      <li>
+        <span class="pos">02</span>
+        <span class="step">Editor</span>
+        <h3>Checks and approves</h3>
+        <p>Reviews what is queued against what is going out.</p>
+      </li>
+      <li>
+        <span class="pos">03</span>
+        <span class="step">Designer</span>
+        <h3>Owns the library</h3>
+        <p>Curates templates and decides what may reach the live system.</p>
+      </li>
+      <li>
+        <span class="pos">04</span>
+        <span class="step">Output</span>
+        <h3>Into the stack you own</h3>
+        <p>Browser source or NDI, into your switcher or your stream.</p>
+      </li>
+    </ol>
+
+    <div class="access-note rise">
+      <span class="label">Access</span>
+      <p><strong>Tier and role decide what can reach air.</strong> Who can build, who can publish,
+        who can only preview &mdash; set per account, not per good intention.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7. VOICE — the big scrub, back at v3 scale ═══════════
+     Portrait, large, and scroll-driven: the poll resolves out of the
+     hand as you pass it. This is the page's signature move and it was
+     too small to register last time. -->
+<section class="voice" id="voice" aria-labelledby="voice-h">
+  <div class="wrap voice-grid">
+    <div class="orb-film rise">
+      <video id="orb-video" muted playsinline preload="auto"
+             poster="assets/art/orb-poll-poster.jpg"
+             aria-label="A spoken command resolving into a poll graphic above an open hand">
+        <source src="assets/video/orb-poll.mp4" type="video/mp4">
+      </video>
+      <span class="film-cap">Scroll &mdash; the graphic arrives</span>
+    </div>
+
+    <div class="voice-copy rise">
+      <p class="index">04 &mdash; The fast path</p>
+      <h2 class="disp" id="voice-h">Keep presenting.<br>Pellar takes the cue.</h2>
+      <p class="lede">Voice is for the moment you cannot stop the show to open a menu. Say the
+        change; Pellar updates the graphic while you stay with your audience.</p>
+      <blockquote>&ldquo;Pellar, show the latest standings.&rdquo;</blockquote>
+      <ul class="voice-points">
+        <li><i class="on" aria-hidden="true"></i> Voice control live now</li>
+        <li><i class="on" aria-hidden="true"></i> Text and manual control stay available</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 8. LOCAL — the rig, drawn in the material language ═══
+     No stock GPU photo and no clip-art: the rack is built from the same
+     relief, fins and LEDs as the operator panel, lit by the teal that
+     the language reserves for things that actually emit. -->
+<section class="pad" id="local" aria-labelledby="local-h">
+  <div class="wrap">
+    <div class="eyebrow"><span>05 &mdash; Your hardware</span></div>
+    <div class="local-grid">
+      <div class="rise">
+        <h2 class="disp" id="local-h">No outside<br>dependency on air</h2>
+        <p class="lede">A broadcast cannot be hostage to somebody else&rsquo;s API being up, and some
+          newsrooms cannot send a frame outside the building. Pellar is being built to render,
+          and to listen, on machines you own.</p>
+        <p class="readout">Local model support is in testing &mdash; an architectural commitment,
+          not a shipped feature. We will say so plainly when it lands.</p>
+      </div>
+
+      <div class="rig rise" aria-hidden="true">
+        <span class="bloom"></span>
+        <div class="unit">
+          <span class="fins"></span>
+          <span class="u-label">GPU render</span>
+          <span class="u-state on">Local</span>
+          <span class="leds"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i class="lit"></i></span>
+        </div>
+        <div class="unit">
+          <span class="fins"></span>
+          <span class="u-label">Voice model</span>
+          <span class="u-state test">Testing</span>
+          <span class="leds"><i class="lit"></i><i class="lit"></i><i></i><i></i></span>
+        </div>
+        <div class="unit">
+          <span class="fins"></span>
+          <span class="u-label">Your data</span>
+          <span class="u-state on">Never leaves</span>
+          <span class="leds"><i class="lit"></i><i class="lit"></i><i class="lit"></i><i></i></span>
+        </div>
+      </div>
+      <p class="vh">Diagram: three local units — GPU render running locally, voice model in
+        testing, and data that never leaves the building.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 9. WHO IT'S FOR ══════════════════════════════════════ -->
+<section class="pad-s" aria-labelledby="verts-h">
+  <div class="wrap">
+    <div class="eyebrow"><span>06 &mdash; Who it&rsquo;s for</span></div>
+    <h2 class="vh" id="verts-h">Verticals Pellar builds templates for</h2>
+
+    <ul class="icp-band rise" aria-hidden="true">
+      <li>Sport</li><li>Markets</li><li>Current affairs</li><li>Esports</li>
+    </ul>
+
+    <div class="verts">
+      <div class="vert rise">
+        <div class="vis">
+          <img class="plate" loading="lazy" src="assets/backplates/stadium.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" src="assets/graphics/sport-matchstats.webp"
+               data-still="assets/graphics/sport-matchstats.png"
+               alt="Match statistics graphic animating over a stadium">
+        </div>
+        <div class="cap"><strong>Sport</strong><span>Scorebugs, line-ups, match stats</span></div>
+      </div>
+      <div class="vert rise">
+        <div class="vis">
+          <img class="plate" loading="lazy" src="assets/backplates/markets.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" src="assets/graphics/markets-bar.webp"
+               data-still="assets/graphics/markets-bar.png"
+               alt="Market movers bar animating over a trading desk">
+        </div>
+        <div class="cap"><strong>Markets</strong><span>Tickers, movers, index bars</span></div>
+      </div>
+      <div class="vert rise">
+        <div class="vis">
+          <img class="plate" loading="lazy" src="assets/proof/studio-floor.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" src="assets/graphics/affairs-election.webp"
+               data-still="assets/graphics/affairs-election.png"
+               alt="Election results graphic animating over a studio floor">
+        </div>
+        <div class="cap"><strong>Current affairs</strong><span>Polls, results, election maps</span></div>
+      </div>
+      <div class="vert rise">
+        <div class="vis">
+          <img class="plate" loading="lazy" src="assets/backplates/gaming.jpg" alt="" aria-hidden="true">
+          <img loading="lazy" src="assets/graphics/esports-standings.webp"
+               data-still="assets/graphics/esports-standings.png"
+               alt="Esports standings table animating over a gaming setup">
+        </div>
+        <div class="cap"><strong>Esports</strong><span>Standings, brackets, player cards</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10. THE CREATOR PATH — big logos, less chrome ════════ -->
+<section class="pad" id="stream-path" aria-labelledby="compat-h">
+  <div class="wrap">
+    <div class="eyebrow"><span>07 &mdash; The creator path</span></div>
+    <div class="sec-head rise">
+      <h2 class="disp" id="compat-h">Works with the tools<br>you already run</h2>
+      <p>Pellar comes out as a browser source or over NDI &mdash; the two things every one of
+        these already accepts. We only mark an app tested once it has passed end to end, so
+        here is exactly where each one stands.</p>
+    </div>
+
+    <ul class="compat-grid rise">
+      <li class="compat-app">
+        <img src="assets/compat/obs-studio.svg" alt="" aria-hidden="true">
+        <strong>OBS Studio</strong><small class="s-now">Testing now</small>
+      </li>
+      <li class="compat-app">
+        <span class="compat-wordmark" aria-hidden="true">vMix</span>
+        <strong>vMix</strong><small class="s-now">Testing now</small>
+      </li>
+      <li class="compat-app">
+        <img src="assets/compat/ndi.svg" alt="" aria-hidden="true">
+        <strong>NDI</strong><small class="s-ok">Output verified</small>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/streamlabs.svg" alt="" aria-hidden="true">
+        <strong>Streamlabs</strong><small>Next, after OBS</small>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/xsplit.svg" alt="" aria-hidden="true">
+        <strong>XSplit</strong><small>Next, after vMix</small>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/elgato.svg" alt="" aria-hidden="true">
+        <strong>Stream Deck</strong><small>Via OBS</small>
+      </li>
+    </ul>
+
+    <p class="compat-note">Logos identify their owners; no partnership is implied.</p>
+  </div>
+</section>
+
+<!-- ══ 11. ORIGIN — the Veles reel ══════════════════════════ -->
+<section class="pad" id="origin" aria-labelledby="origin-h">
+  <div class="wrap">
+    <div class="eyebrow"><span>08 &mdash; Where it comes from</span></div>
+
+    <div class="origin">
+      <div class="rise">
+        <h2 class="disp" id="origin-h">Made by people who<br>put graphics on air</h2>
+        <p class="lede">Veles Productions builds virtual studios and live broadcast graphics for
+          television. Pellar is that knowledge turned into a system &mdash; which is why it argues
+          about safe areas and approval chains, not prompts.</p>
+
+        <ul class="origin-facts">
+          <li><span class="label">Origin</span> A broadcast production company, not a software startup</li>
+          <li><span class="label">On this page</span> Every graphic shown is a real template rendering</li>
+          <li><span class="label">Programme</span> NVIDIA Inception member</li>
+        </ul>
+      </div>
+
+      <div class="rise origin-media">
+        <div class="reel">
+          <video controls playsinline preload="metadata"
+                 poster="assets/proof/election-studio-poster.jpg"
+                 aria-label="Veles Productions broadcast work showreel">
+            <source src="assets/video/veles-reel.mp4" type="video/mp4">
+          </video>
+          <span class="reel-cap">Veles Productions &middot; broadcast work</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⚠ SAM — CONTENT GATE 1 of 2. The named-customer slot.
+         Candidates from the 11 Aug training session: Super Express
+         (pie chart + flowchart, hard on their current Vimix) and TVP as
+         a reference. Nothing publishes until you clear a name.
+    <div class="proofquote rise">
+      <blockquote>"<cleared quote>"</blockquote>
+      <cite><cleared name>, <role>, <organisation></cite>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ══ 12. EARLY ACCESS ═════════════════════════════════════ -->
+<section class="pad" id="waitlist" aria-labelledby="waitlist-h">
+  <div class="wrap narrow">
+    <div class="eyebrow"><span>Early access</span></div>
+    <h2 class="disp rise" id="waitlist-h">What would you put<br>on screen first?</h2>
+    <p class="lede rise">Leave your address and we will let you know when you can test it.
+      Tell us what you make and we will start with the graphics you cannot do today.</p>
+
+    <!-- ⚠ SAM — CONTENT GATE 2 of 2. Cohort size and pilot terms —
+         "first N teams", free / paid / credited. Yours to set. One line,
+         right here:  <p class="offer-terms"><strong>First N teams.</strong> [terms] during the pilot.</p> -->
+
+    <form class="signup rise" data-waitlist novalidate>
+      <div class="field-group">
+        <label for="wl-email">Work email</label>
+        <input id="wl-email" type="email" name="email" placeholder="you@yourstation.com"
+               autocomplete="email" required>
+      </div>
+      <div class="field-group">
+        <label for="wl-segment">What do you make?</label>
+        <select id="wl-segment" name="segment">
+          <option value="">Choose one&hellip;</option>
+          <option value="broadcast">Broadcast &mdash; station, newsroom, production company</option>
+          <option value="stream">Stream &mdash; creator, esports, live channel</option>
+        </select>
+      </div>
+      <button class="key" type="submit"><span>Join early access</span><i aria-hidden="true"></i></button>
+      <p class="signup-msg" role="status" aria-live="polite"></p>
+    </form>
+
+    <p class="consent">We send a confirmation link first &mdash; nothing else until you click it.
+      Unsubscribe any time. <a href="privacy.html">Privacy notice</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img class="logo" src="assets/pellar-logo.png" alt="Pellar">
+        <p>Live broadcast graphics, driven by voice or text and rendered in real time.
+          A Veles Productions product.</p>
+      </div>
+
+      <nav class="foot-col" aria-label="Product">
+        <h2>Product</h2>
+        <a href="#system">Templates</a>
+        <a href="#verify">Verify</a>
+        <a href="#chain">Broadcast</a>
+        <a href="#stream-path">Stream</a>
+      </nav>
+
+      <div class="foot-col">
+        <h2>Contact</h2>
+        <a href="mailto:pellar@velesproductions.com">pellar@velesproductions.com</a>
+        <a href="https://velesproductions.com" rel="noopener">velesproductions.com</a>
+        <a href="privacy.html">Privacy notice</a>
+      </div>
+
+      <div class="foot-col foot-badge">
+        <h2>Programme</h2>
+        <img src="assets/nvidia/nvidia-inception-program-badge-rgb-for-screen.svg"
+             alt="NVIDIA Inception Program member" loading="lazy">
+        <p>Member of the NVIDIA Inception programme for AI and graphics startups.</p>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <p>&copy; 2026 Veles Productions. All rights reserved.</p>
+      <p class="readout">Early access &middot; 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="app.js"></script>
+<script src="sales-page-v8.js"></script>
+</body>
+</html>
