@@ -23,10 +23,10 @@
   }
 
   var templates = {
-    sport: { label: 'Sport / Match stats', plate: 'assets/backplates/stadium.jpg', output: 'assets/graphics/sport-matchstats.webp', alt: 'Animated match statistics template', command: '"Show the match stats."' },
-    markets: { label: 'Markets / Index strip', plate: 'assets/backplates/markets.jpg', output: 'assets/graphics/markets-bar.webp', alt: 'Animated market index strip', command: '"Put the market move on screen."' },
-    affairs: { label: 'Current affairs / Results', plate: 'assets/backplates/homestudio.jpg', output: 'assets/graphics/affairs-election.webp', alt: 'Animated election results template', command: '"Show the latest results."' },
-    esports: { label: 'Esports / Standings', plate: 'assets/backplates/gaming.jpg', output: 'assets/graphics/esports-standings.webp', alt: 'Animated esports standings template', command: '"Bring up the standings."' }
+    sport: { label: 'Sport / Match stats', plate: 'assets/backplates/stadium.jpg', output: 'assets/graphics/sport-matchstats-alpha.webp', alt: 'Animated match statistics template', command: '"Show the match stats."' },
+    markets: { label: 'Markets / Index strip', plate: 'assets/backplates/markets.jpg', output: 'assets/graphics/markets-bar-alpha.webp', alt: 'Animated market index strip', command: '"Put the market move on screen."' },
+    affairs: { label: 'Current affairs / Results', plate: 'assets/backplates/homestudio.jpg', output: 'assets/graphics/affairs-election-alpha.webp', alt: 'Animated election results template', command: '"Show the latest results."' },
+    esports: { label: 'Esports / Standings', plate: 'assets/backplates/gaming.jpg', output: 'assets/graphics/esports-standings-alpha.webp', alt: 'Animated esports standings template', command: '"Bring up the standings."' }
   };
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-template]'));
@@ -58,20 +58,33 @@
   }
 
   var scrubVideos = Array.prototype.slice.call(document.querySelectorAll('[data-scrub-video]'));
+  var scrubTicking = false;
   function updateScrubVideos() {
+    scrubTicking = false;
     if (reduced || !scrubVideos.length) return;
     scrubVideos.forEach(function (video) {
       if (!video.duration || !video.parentElement) return;
       var rect = video.parentElement.getBoundingClientRect();
       var travel = window.innerHeight + rect.height;
-      var progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / travel));
-      video.currentTime = progress * video.duration;
+      if (travel <= 0) return;
+      var raw = (window.innerHeight - rect.top) / travel;
+      // A band trims the head and tail of the travel so the clip plays out while
+      // the element is actually on screen, not while it is half off the viewport.
+      var band = parseFloat(video.getAttribute('data-scrub-band')) || 0;
+      if (band > 0 && band < 0.5) raw = (raw - band) / (1 - 2 * band);
+      var target = Math.min(1, Math.max(0, raw)) * video.duration;
+      if (Math.abs(video.currentTime - target) > 0.01) video.currentTime = target;
     });
+  }
+  function requestScrubUpdate() {
+    if (scrubTicking) return;
+    scrubTicking = true;
+    window.requestAnimationFrame(updateScrubVideos);
   }
   scrubVideos.forEach(function (video) {
     video.addEventListener('loadedmetadata', updateScrubVideos);
   });
-  window.addEventListener('scroll', updateScrubVideos, { passive: true });
-  window.addEventListener('resize', updateScrubVideos);
+  window.addEventListener('scroll', requestScrubUpdate, { passive: true });
+  window.addEventListener('resize', requestScrubUpdate);
   updateScrubVideos();
 }());
