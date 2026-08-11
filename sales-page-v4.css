@@ -1,0 +1,524 @@
+/* ============================================================
+   Pellar sales page v4
+   Design language codified in
+   C:\AI_LAB\pellar\.grill-me\pellar-website-design-language\
+
+   Registers:
+     LIGHT     navy -> teal.  Ground, blooms, lit rims, LEDs.
+     MATERIAL  charcoal + grey. Panels, controls, relief.
+     ACCENT    Veles red. State, emphasis, action. Nothing else.
+   Rules: material never glows; light never becomes a surface.
+   ============================================================ */
+
+/* ── Tokens: light mode is the base definition ───────────── */
+:root {
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --disp: 'Barlow Condensed', 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  /* accent — the only one */
+  --red:        #E63946;
+  --red-dim:    #B92B37;
+
+  /* light register */
+  --navy-900:   #050810;
+  --navy-800:   #0A1020;
+  --navy-700:   #101A2E;
+  --teal:       #4CC9DB;
+  --teal-dim:   #2A7F8C;
+
+  /* material register (light mode: pale panels) */
+  --ground:     #EFF1F3;
+  --panel:      #F7F8F9;
+  --panel-2:    #E7EAED;
+  --edge:       #D6DADE;
+  --relief-hi:  rgba(255,255,255,.9);
+  --relief-lo:  rgba(20,25,35,.10);
+
+  --text-1:     #14181D;
+  --text-2:     #4A535E;
+  --text-3:     #7A848F;
+
+  --shell:      #FFFFFF;
+  --frame-rule: rgba(20,25,35,.28);
+
+  --r:    14px;
+  --r-sm: 9px;
+  --maxw: 1240px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* dark is the default look — applied unless the viewer forces light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground:    #05080F;
+    --panel:     #14161A;
+    --panel-2:   #1C1F24;
+    --edge:      #2A2E35;
+    --relief-hi: rgba(255,255,255,.07);
+    --relief-lo: rgba(0,0,0,.55);
+
+    --text-1:    #F2F4F6;
+    --text-2:    #A7B0BA;
+    --text-3:    #6B7480;
+
+    --shell:     #0A0D14;
+    --frame-rule: rgba(120,200,215,.30);
+  }
+}
+:root[data-theme="dark"] {
+  --ground:    #05080F;
+  --panel:     #14161A;
+  --panel-2:   #1C1F24;
+  --edge:      #2A2E35;
+  --relief-hi: rgba(255,255,255,.07);
+  --relief-lo: rgba(0,0,0,.55);
+
+  --text-1:    #F2F4F6;
+  --text-2:    #A7B0BA;
+  --text-3:    #6B7480;
+
+  --shell:     #0A0D14;
+  --frame-rule: rgba(120,200,215,.30);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--text-1);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Type registers ──────────────────────────────────────── */
+.disp {
+  font-family: var(--disp);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  line-height: .94;
+  margin: 0;
+}
+h1.disp { font-size: clamp(2.9rem, 8vw, 6.6rem); }
+h2.disp { font-size: clamp(2.1rem, 5vw, 4rem); }
+h3.disp { font-size: clamp(1.3rem, 2.2vw, 1.8rem); }
+
+/* faceplate microlabel — lifted straight off hardware */
+.label {
+  font-family: var(--mono);
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.readout { font-family: var(--mono); font-size: .8rem; letter-spacing: .04em; color: var(--text-2); }
+.lede { font-size: clamp(1rem, 1.4vw, 1.16rem); color: var(--text-2); max-width: 60ch; }
+p { margin: 0 0 1rem; }
+a { color: inherit; }
+
+.wrap { width: min(100% - 2.4rem, var(--maxw)); margin-inline: auto; }
+section { position: relative; }
+
+/* ── Section eyebrow: pill between two hairlines (ref 22) ── */
+.eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.4rem; }
+.eyebrow::before, .eyebrow::after { content: ""; height: 1px; background: var(--edge); flex: 1; }
+.eyebrow span {
+  border: 1px solid var(--edge);
+  border-radius: 99px;
+  padding: .3rem .95rem;
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+
+/* ── Safe-area frame — the product's own overlay, reused
+      as the page's framing device for every media block ─── */
+.safe {
+  position: relative;
+  display: block;
+  background: var(--navy-900);
+  border-radius: var(--r);
+  overflow: hidden;
+  isolation: isolate;
+}
+.safe > img, .safe > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.safe::before {
+  content: "";
+  position: absolute;
+  inset: 2.2%;
+  border: 1px dashed var(--frame-rule);
+  pointer-events: none;
+  z-index: 3;
+}
+.safe::after {
+  content: "";
+  position: absolute;
+  inset: 1.1%;
+  border: 1px dotted rgba(255,255,255,.14);
+  pointer-events: none;
+  z-index: 3;
+}
+.safe .brackets { position: absolute; inset: 2.2%; pointer-events: none; z-index: 4; }
+.safe .brackets i {
+  position: absolute; width: 34px; height: 34px;
+  border: 0 solid var(--red);
+}
+.safe .brackets i:nth-child(1) { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+.safe .brackets i:nth-child(2) { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+.safe .brackets i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+.safe .brackets i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+.safe .cross {
+  position: absolute; top: 50%; left: 50%; width: 22px; height: 22px;
+  transform: translate(-50%,-50%); pointer-events: none; z-index: 4; opacity: .55;
+}
+.safe .cross::before, .safe .cross::after {
+  content: ""; position: absolute; background: var(--teal);
+}
+.safe .cross::before { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-.5px); }
+.safe .cross::after  { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-.5px); }
+
+/* ── Fade between registers — never a hard edge ─────────── */
+.fade-in-ground::before,
+.fade-out-ground::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 22vh;
+  pointer-events: none; z-index: 2;
+}
+.fade-in-ground::before  { top: 0;    background: linear-gradient(to bottom, var(--ground), transparent); }
+.fade-out-ground::after  { bottom: 0; background: linear-gradient(to top,    var(--ground), transparent); }
+
+/* ── Header ──────────────────────────────────────────────── */
+header.bar {
+  position: fixed; inset: 0 0 auto 0; z-index: 60;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: .8rem clamp(1.2rem, 3vw, 2rem);
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--ground) 76%, transparent);
+  border-bottom: 1px solid var(--edge);
+}
+/* The wordmark asset is white. In light mode it has to be flipped or it
+   disappears into the shelf. */
+header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
+:root[data-theme="light"] .logo { filter: invert(1); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .logo { filter: invert(1); }
+}
+
+/* segmented control — the nav primitive (ref 12) */
+.seg {
+  display: flex; align-items: center; gap: .2rem;
+  background: var(--panel-2);
+  border: 1px solid var(--edge);
+  border-radius: 99px;
+  padding: .22rem;
+  box-shadow: inset 0 1px 0 var(--relief-hi);
+}
+.seg a, .seg button {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  font: inherit; font-size: .82rem; color: var(--text-3);
+  padding: .38rem .85rem; border-radius: 99px; text-decoration: none;
+  display: inline-flex; align-items: center; gap: .45rem;
+  transition: color .18s var(--ease), background .18s var(--ease);
+}
+.seg a:hover, .seg button:hover { color: var(--text-1); }
+.seg .on {
+  color: var(--text-1);
+  background: var(--panel);
+  box-shadow: 0 1px 2px var(--relief-lo), inset 0 1px 0 var(--relief-hi);
+}
+.seg .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 7px var(--teal); }
+
+@media (max-width: 860px) { .seg.nav-links { display: none; } }
+
+/* ── Buttons: relief + LED, never a coloured cap ─────────── */
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center;
+  gap: .55rem; cursor: pointer; text-decoration: none;
+  font: inherit; font-weight: 500; font-size: .92rem;
+  padding: .78rem 1.5rem; border-radius: var(--r-sm);
+  background: var(--panel-2);
+  color: var(--text-1);
+  border: 1px solid var(--edge);
+  box-shadow: 0 2px 5px var(--relief-lo), inset 0 1px 0 var(--relief-hi);
+  transition: transform .12s var(--ease), box-shadow .12s var(--ease);
+}
+.btn:active { transform: translateY(1px); box-shadow: inset 0 2px 5px var(--relief-lo); }
+/* the LED bar underneath — state lives here, not on the cap (ref 15) */
+.btn::after {
+  content: ""; position: absolute; left: 50%; bottom: -7px;
+  width: 26px; height: 2px; border-radius: 2px;
+  transform: translateX(-50%);
+  background: var(--edge);
+  transition: background .2s var(--ease), box-shadow .2s var(--ease);
+}
+.btn:hover::after, .btn.is-lit::after {
+  background: var(--red);
+  box-shadow: 0 0 9px var(--red);
+}
+.btn-primary { background: var(--panel); font-weight: 600; }
+.btn-primary::after { background: var(--red-dim); }
+
+/* ── HERO — scrub-scroll (doodle, panel 1) ───────────────── */
+.hero { position: relative; padding: 7.5rem 0 3rem; }
+.hero-stage { position: relative; }
+.hero .safe { aspect-ratio: 16 / 9; }
+.hero-copy { position: absolute; left: 6%; bottom: 13%; z-index: 5; max-width: 62%; }
+.hero-copy h1 { color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,.6); }
+.hero-copy .lede { color: rgba(255,255,255,.82); margin-top: 1.1rem; }
+.hero-status {
+  position: absolute; top: 6%; left: 6%; right: 6%; z-index: 5;
+  display: flex; gap: clamp(1.2rem, 4vw, 3.4rem); flex-wrap: wrap;
+}
+.hero-status div .label { color: rgba(190,215,225,.7); }
+.hero-status div strong { display: block; font-family: var(--mono); font-size: .84rem; color: #fff; font-weight: 500; }
+
+/* the scrub rail down the right edge */
+.scrub-rail {
+  position: absolute; top: 12%; bottom: 12%; right: -22px; width: 4px;
+  border-radius: 4px; background: var(--edge); z-index: 6;
+}
+.scrub-rail i {
+  position: absolute; left: -3px; width: 10px; height: 34px; border-radius: 5px;
+  background: var(--red); box-shadow: 0 0 12px rgba(230,57,70,.55);
+  transition: top .08s linear;
+}
+@media (max-width: 900px) { .scrub-rail { display: none; } }
+
+.hero-cta { display: flex; gap: .9rem; flex-wrap: wrap; margin-top: 2.6rem; align-items: center; }
+
+/* Below the fork breakpoint the hero copy stops floating over the
+   media — there is no room for an overlay at 390px, and the frame
+   is the thing worth protecting. */
+@media (max-width: 860px) {
+  .hero { padding-top: 6rem; }
+  .hero .safe { aspect-ratio: 4 / 5; }
+  .hero-copy {
+    position: static; max-width: none; margin-top: 1.8rem;
+  }
+  .hero-copy h1 { color: var(--text-1); text-shadow: none; }
+  .hero-copy .lede { color: var(--text-2); }
+  .hero-status { gap: .9rem 1.5rem; top: 4%; }
+  .hero-status div strong { font-size: .72rem; }
+  .hero-status .label { font-size: .56rem; }
+  .hero-cta { margin-top: 1.8rem; }
+  .hero-cta .readout { flex-basis: 100%; margin-left: 0 !important; }
+}
+
+/* ── FORK — stream / broadcast (doodle, panel 2) ─────────── */
+.fork { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: 4.5rem; }
+@media (max-width: 780px) { .fork { grid-template-columns: 1fr; } }
+.fork-card {
+  position: relative; overflow: hidden;
+  border-radius: var(--r);
+  border: 1px solid var(--edge);
+  background: var(--panel);
+  box-shadow: 0 1px 0 var(--relief-hi) inset, 0 10px 30px -22px var(--relief-lo);
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  transition: transform .25s var(--ease), border-color .25s var(--ease);
+}
+.fork-card:hover { transform: translateY(-3px); border-color: var(--text-3); }
+.fork-card .shot { position: relative; aspect-ratio: 16/10; }
+.fork-card .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fork-card .shot::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--panel) 4%, transparent 62%);
+}
+.fork-card .body { padding: 1.5rem 1.6rem 1.7rem; }
+.fork-card .body h3 { margin: .1rem 0 .5rem; }
+.fork-card .body p { color: var(--text-2); font-size: .95rem; margin: 0 0 1rem; }
+.fork-card .go { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+
+/* ── The panel: Pellar's operator UI, rebuilt in Pellar's
+      own palette. Not a client build, not a screenshot. ─── */
+.console { display: grid; grid-template-columns: 1.35fr 1fr; gap: 1.6rem; align-items: center; }
+@media (max-width: 980px) { .console { grid-template-columns: 1fr; } }
+.console .safe { aspect-ratio: 16/9; }
+
+.panel {
+  background: linear-gradient(180deg, var(--navy-700), var(--navy-800));
+  border: 1px solid rgba(120,160,200,.16);
+  border-radius: var(--r);
+  box-shadow: 0 26px 60px -30px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.06);
+  overflow: hidden;
+  color: #E8EEF5;
+}
+.panel .p-head {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .7rem .85rem; border-bottom: 1px solid rgba(120,160,200,.12);
+}
+.panel .grip { width: 10px; height: 14px; opacity: .45;
+  background-image: radial-gradient(circle, #9fb6cc 1px, transparent 1px);
+  background-size: 5px 5px; }
+.panel .p-head .spacer { flex: 1; }
+.panel .chip {
+  width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center; font-size: .68rem;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.09);
+}
+.panel .chip.me { background: rgba(230,57,70,.16); border-color: rgba(230,57,70,.5); color: #FF9BA3; }
+.panel .p-body { padding: 1rem .95rem 1.1rem; min-height: 168px; }
+.panel .from { font-family: var(--mono); font-size: .6rem; letter-spacing: .18em; color: #7E96AE; margin-bottom: .45rem; }
+.panel .bubble {
+  background: rgba(90,140,190,.14);
+  border: 1px solid rgba(120,170,215,.18);
+  border-radius: 12px; padding: .75rem .9rem;
+  font-size: .92rem; line-height: 1.45; color: #EAF1F8;
+}
+.panel .ago { font-size: .72rem; color: #64798E; margin-top: .4rem; }
+
+.panel .p-input { display: flex; align-items: center; gap: .55rem; padding: .7rem .8rem; }
+.panel .p-input .field {
+  flex: 1; background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.09); border-radius: 10px;
+  padding: .58rem .8rem; font-size: .86rem; color: #8FA3B8;
+}
+.panel .send {
+  width: 36px; height: 32px; border-radius: 9px; border: 0;
+  background: var(--red); color: #fff; cursor: pointer;
+  display: grid; place-items: center;
+  box-shadow: 0 2px 10px rgba(230,57,70,.4);
+}
+
+/* the voice orb — light, so it may glow. one hue only. */
+.orb {
+  width: 32px; height: 32px; border-radius: 50%; flex: none;
+  background:
+    radial-gradient(circle at 34% 30%, rgba(160,235,250,.95), rgba(60,150,180,.5) 46%, rgba(10,30,50,.9) 78%);
+  box-shadow: 0 0 0 1px rgba(140,220,240,.28), 0 0 16px rgba(76,201,219,.45);
+  animation: breathe 3.6s var(--ease) infinite;
+}
+@keyframes breathe {
+  0%,100% { box-shadow: 0 0 0 1px rgba(140,220,240,.28), 0 0 14px rgba(76,201,219,.36); }
+  50%     { box-shadow: 0 0 0 1px rgba(140,220,240,.42), 0 0 26px rgba(76,201,219,.62); }
+}
+@media (prefers-reduced-motion: reduce) { .orb { animation: none; } }
+
+/* transport strip — tick scale, raised primary, readouts (refs 19 + 24) */
+.transport { padding: .7rem .85rem .95rem; border-top: 1px solid rgba(120,160,200,.12); }
+.transport .row { display: flex; align-items: center; gap: .7rem; }
+.transport .play {
+  width: 30px; height: 30px; border-radius: 8px; border: 0; cursor: pointer;
+  background: #F3F6F9; color: #101A2E; display: grid; place-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.transport .bar { flex: 1; height: 3px; border-radius: 3px; background: rgba(255,255,255,.12); position: relative; }
+.transport .bar i { position: absolute; top: 50%; left: 4%; width: 9px; height: 9px; border-radius: 50%;
+  transform: translateY(-50%); background: var(--red); box-shadow: 0 0 9px rgba(230,57,70,.6); }
+.transport .meta { display: flex; align-items: center; gap: .7rem; margin-top: .6rem; flex-wrap: wrap; }
+.transport .tc { font-family: var(--mono); font-size: .86rem; color: #DCE6F0; letter-spacing: .02em; }
+.transport .tc em { color: #64798E; font-style: normal; }
+.transport .tag {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .1em;
+  padding: .16rem .5rem; border-radius: 99px;
+  border: 1px solid rgba(230,57,70,.5); color: #FF9BA3;
+}
+.transport .tag.mute { border-color: rgba(255,255,255,.14); color: #7E96AE; }
+
+/* ── Bento telemetry grid — real data, never illustration ─ */
+.bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+@media (max-width: 900px) { .bento { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .bento { grid-template-columns: 1fr; } }
+.cell {
+  background: var(--panel);
+  border: 1px solid var(--edge);
+  border-radius: var(--r);
+  padding: 1.3rem 1.35rem 1.4rem;
+  box-shadow: inset 0 1px 0 var(--relief-hi);
+  min-height: 168px;
+  display: flex; flex-direction: column;
+}
+.cell .label { margin-bottom: .9rem; }
+.cell h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin: 0 0 .45rem; }
+.cell p { color: var(--text-2); font-size: .9rem; margin: 0; }
+.cell .num { font-family: var(--mono); font-size: 2rem; color: var(--text-1); line-height: 1; margin: auto 0 .35rem; }
+.cell.wide { grid-column: span 2; }
+@media (max-width: 620px) { .cell.wide { grid-column: span 1; } }
+
+/* tick-scale row — the faceplate control, translated (ref 24) */
+.tickrow {
+  display: flex; align-items: center; gap: .9rem;
+  background: var(--panel-2); border: 1px solid var(--edge);
+  border-radius: 99px; padding: .5rem .95rem; margin-top: .7rem;
+  box-shadow: inset 0 1px 0 var(--relief-hi);
+}
+.tickrow .nm { font-size: .84rem; color: var(--text-2); min-width: 74px; }
+.tickrow .ticks { flex: 1; display: flex; align-items: center; gap: 5px; }
+.tickrow .ticks span { flex: 1; height: 8px; border-radius: 1px; background: var(--edge); }
+.tickrow .ticks span.hot { background: var(--red); box-shadow: 0 0 7px rgba(230,57,70,.5); }
+.tickrow .val { font-family: var(--mono); font-size: .78rem; color: var(--text-1); min-width: 44px; text-align: right; }
+
+/* ── Full-bleed band (doodle, panel 4) ───────────────────── */
+.band { position: relative; min-height: 78vh; display: grid; place-items: center; overflow: hidden; }
+.band > img, .band > video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;
+}
+.band .veil {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to bottom, var(--ground) 0%, rgba(5,8,16,.55) 26%, rgba(5,8,16,.55) 74%, var(--ground) 100%);
+}
+.band .inner { position: relative; z-index: 2; text-align: center; padding: 4rem 1.5rem; max-width: 62ch; }
+.band .inner h2 { color: #fff; }
+.band .inner p { color: rgba(255,255,255,.78); margin-top: 1.2rem; }
+
+/* ── Proof — checkerboard, the densest unit ──────────────── */
+.proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: .85rem; }
+@media (max-width: 900px) { .proof { grid-template-columns: 1fr 1fr; } }
+.proof .p {
+  border: 1px solid var(--edge); border-radius: var(--r-sm);
+  background: var(--panel); overflow: hidden; min-height: 150px;
+}
+.proof .p.txt { padding: 1.1rem 1.2rem; display: flex; flex-direction: column; justify-content: space-between; }
+.proof .p.txt strong { font-family: var(--disp); text-transform: uppercase; font-size: 1.35rem; font-weight: 600; line-height: 1; }
+.proof .p.txt span { color: var(--text-2); font-size: .84rem; }
+.proof .p.img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ── Compat strip: a light shelf against the dark (ref 8) ── */
+.shelf {
+  display: flex; align-items: center; justify-content: center; gap: clamp(1.4rem, 5vw, 3.6rem);
+  flex-wrap: wrap; padding: 1.5rem 1.8rem;
+  background: var(--panel); border: 1px solid var(--edge); border-radius: var(--r);
+  box-shadow: inset 0 1px 0 var(--relief-hi);
+}
+.shelf img { height: 22px; width: auto; opacity: .62; filter: grayscale(1); }
+:root[data-theme="dark"] .shelf img,
+:root:not([data-theme="light"]) .shelf img { filter: grayscale(1) invert(1) brightness(1.6); }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .shelf img { filter: grayscale(1); } }
+
+/* ── Waitlist ────────────────────────────────────────────── */
+.signup { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.6rem; }
+.signup input[type=email], .signup select {
+  font: inherit; font-size: .95rem; padding: .78rem 1rem;
+  background: var(--panel-2); color: var(--text-1);
+  border: 1px solid var(--edge); border-radius: var(--r-sm);
+  box-shadow: inset 0 2px 4px var(--relief-lo);
+}
+.signup input[type=email] { flex: 1; min-width: 240px; }
+.signup .signup-msg { flex-basis: 100%; font-size: .86rem; color: var(--text-2); margin-top: .3rem; min-height: 1.2em; }
+.signup .signup-msg.err { color: var(--red); }
+.consent { font-size: .78rem; color: var(--text-3); max-width: 62ch; margin-top: .9rem; }
+.consent a { color: var(--text-2); }
+
+/* ── Footer ──────────────────────────────────────────────── */
+footer.foot {
+  border-top: 1px solid var(--edge); margin-top: 6rem; padding: 2.6rem 0 3.4rem;
+  color: var(--text-3); font-size: .84rem;
+}
+footer.foot .cols { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+
+.pad   { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+.pad-s { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+
+/* reveal on scroll */
+.rise { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.rise.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .rise { opacity: 1; transform: none; transition: none; } }
