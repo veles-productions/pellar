@@ -27,10 +27,9 @@
   </nav>
 
   <div style="display:flex;gap:.6rem;align-items:center">
-    <div class="seg">
-      <button type="button" data-theme-set="dark"  aria-label="Dark mode">Dark</button>
-      <button type="button" data-theme-set="light" aria-label="Light mode">Light</button>
-    </div>
+    <button class="theme-knob" id="theme" type="button" aria-label="Switch colour theme">
+      <span aria-hidden="true">&#9686;</span>
+    </button>
     <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
   </div>
 </header>
@@ -41,11 +40,12 @@
 
     <div class="safe" id="hero-safe">
       <video id="hero-video" muted playsinline preload="auto"
-             poster="assets/proof/controlroom-poster.jpg">
-        <source src="assets/video/controlroom.mp4" type="video/mp4">
+             poster="assets/proof/election-studio-poster.jpg">
+        <source src="assets/video/election-studio.mp4" type="video/mp4">
       </video>
       <span class="brackets"><i></i><i></i><i></i><i></i></span>
       <span class="cross"></span>
+      <img class="bug" src="assets/pellar-logo.png" alt="" aria-hidden="true">
 
       <div class="hero-status">
         <div><span class="label">Source</span><strong>LIVE</strong></div>
@@ -125,6 +125,7 @@
                width="618" height="186">
           <span class="brackets"><i></i><i></i><i></i><i></i></span>
           <span class="cross"></span>
+          <img class="bug" src="assets/pellar-logo.png" alt="" aria-hidden="true">
         </div>
         <p class="caption">Working Pellar templates rendered with sample data, composited over a
           stand-in match frame. The graphics are not mockups &mdash; that is them running.</p>
@@ -298,6 +299,7 @@
         </video>
         <span class="brackets"><i></i><i></i><i></i><i></i></span>
         <span class="cross"></span>
+        <img class="bug" src="assets/pellar-logo.png" alt="" aria-hidden="true">
       </div>
     </div>
   </div>

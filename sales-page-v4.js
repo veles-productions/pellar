@@ -14,21 +14,23 @@
   if (stored === 'light' || stored === 'dark') {
     document.documentElement.setAttribute('data-theme', stored);
   }
-  function markTheme() {
-    var cur = document.documentElement.getAttribute('data-theme') || 'dark';
-    Array.prototype.forEach.call(document.querySelectorAll('[data-theme-set]'), function (b) {
-      b.classList.toggle('on', b.getAttribute('data-theme-set') === cur);
-    });
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('[data-theme-set]'), function (b) {
-    b.addEventListener('click', function () {
-      var next = b.getAttribute('data-theme-set');
+  /* The knob keeps turning in one direction — each press adds another
+     half turn on top of the CSS spring, so it reads as a detent rather
+     than a state that snaps back. */
+  var knob = document.getElementById('theme');
+  var turns = 0;
+  if (knob) {
+    knob.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      var next = cur === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       try { localStorage.setItem('pellar-theme', next); } catch (e) {}
-      markTheme();
+      if (!reduce) {
+        turns += 180;
+        knob.style.setProperty('--turn', turns + 'deg');
+      }
     });
-  });
-  markTheme();
+  }
 
   /* ── Reveal on scroll ─────────────────────────────────── */
   var risers = document.querySelectorAll('.rise');

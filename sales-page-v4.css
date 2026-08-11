@@ -46,6 +46,10 @@
   --r-sm: 9px;
   --maxw: 1240px;
   --ease: cubic-bezier(.22,.61,.36,1);
+  /* the spring. Overshoots slightly, settles. Every control on the page
+     that can be pressed or lifted uses this — it is what makes the UI
+     feel sprung rather than animated. */
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
 }
 
 /* dark is the default look — applied unless the viewer forces light */
@@ -153,7 +157,7 @@ section { position: relative; }
   isolation: isolate;
 }
 /* the media that fills the frame — graphics laid over it opt out below */
-.safe > img:not(.g-center):not(.g-lower),
+.safe > img:not(.g-center):not(.g-lower):not(.bug),
 .safe > video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .safe::before {
   content: "";
@@ -210,7 +214,8 @@ header.bar {
 }
 /* The wordmark asset is white. In light mode it has to be flipped or it
    disappears into the shelf. */
-header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
+header.bar .logo { height: 34px; width: auto; }
+footer.foot .logo { height: 26px; width: auto; }
 :root[data-theme="light"] .logo { filter: invert(1); }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) .logo { filter: invert(1); }
@@ -240,6 +245,30 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
 }
 .seg .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 7px var(--teal); }
 
+/* ── Theme toggle as a machined rotary knob ───────────────
+      It turns under the cursor and overshoots on press. The one
+      piece of the page that is unambiguously a physical control. */
+.theme-knob {
+  width: 42px; height: 42px; flex: none; cursor: pointer;
+  border-radius: 50%; border: 1px solid var(--edge);
+  background: radial-gradient(circle at 35% 28%, var(--panel-2), var(--panel) 74%);
+  color: var(--text-2); font-size: 1rem; line-height: 1;
+  display: grid; place-items: center;
+  box-shadow: inset 0 1px 0 var(--relief-hi), 0 2px 0 var(--relief-lo), 0 4px 10px rgba(0,0,0,.3);
+  transition: transform .45s var(--spring), color .16s ease, border-color .16s ease;
+}
+/* --turn accumulates in JS so the knob keeps turning one way; hover and
+   press compose on top of wherever it currently sits. */
+.theme-knob { transform: rotate(var(--turn, 0deg)); }
+.theme-knob:hover { color: var(--text-1); border-color: var(--red); transform: rotate(calc(var(--turn, 0deg) + 28deg)); }
+.theme-knob:active { transform: rotate(calc(var(--turn, 0deg) + 140deg)) scale(.95); transition-duration: .12s; }
+/* the indicator line, like a knob's pointer */
+.theme-knob::before {
+  content: ""; position: absolute; width: 2px; height: 9px; border-radius: 2px;
+  background: var(--text-3); transform: translateY(-13px);
+}
+.theme-knob { position: relative; }
+
 @media (max-width: 860px) { .seg.nav-links { display: none; } }
 
 /* ── Buttons: relief + LED, never a coloured cap ─────────── */
@@ -251,10 +280,19 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
   background: var(--panel-2);
   color: var(--text-1);
   border: 1px solid var(--edge);
-  box-shadow: 0 2px 5px var(--relief-lo), inset 0 1px 0 var(--relief-hi);
-  transition: transform .12s var(--ease), box-shadow .12s var(--ease);
+  box-shadow: 0 2px 0 var(--relief-lo), 0 3px 8px rgba(0,0,0,.28), inset 0 1px 0 var(--relief-hi);
+  transition: transform .18s var(--spring), box-shadow .18s var(--spring),
+              background-color .16s ease, border-color .16s ease;
 }
-.btn:active { transform: translateY(1px); box-shadow: inset 0 2px 5px var(--relief-lo); }
+/* raised cap lifts, then sinks physically on press */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 var(--relief-lo), 0 9px 18px rgba(0,0,0,.36), inset 0 1px 0 var(--relief-hi);
+}
+.btn:active {
+  transform: translateY(1px); transition-duration: .07s;
+  box-shadow: inset 0 2px 5px var(--relief-lo), 0 1px 3px rgba(0,0,0,.3);
+}
 /* the LED bar underneath — state lives here, not on the cap (ref 15) */
 .btn::after {
   content: ""; position: absolute; left: 50%; bottom: -7px;
@@ -274,6 +312,9 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
 .hero { position: relative; padding: 7.5rem 0 3rem; }
 .hero-stage { position: relative; }
 .hero .safe { aspect-ratio: 16 / 9; }
+/* The studio clip is 2.35:1 content letterboxed inside a 16:9 file.
+   Scale past the baked-in bars so the frame is filled with picture. */
+#hero-video { transform: scale(1.33); transform-origin: center 46%; }
 .hero-copy { position: absolute; left: 6%; bottom: 13%; z-index: 5; max-width: 62%; }
 .hero-copy h1 { color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,.6); }
 .hero-copy .lede { color: rgba(255,255,255,.82); margin-top: 1.1rem; }
@@ -329,7 +370,18 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
   display: flex; flex-direction: column;
   transition: transform .25s var(--ease), border-color .25s var(--ease);
 }
-.fork-card:hover { transform: translateY(-3px); border-color: var(--text-3); }
+.fork-card { transition: transform .28s var(--spring), border-color .18s ease, box-shadow .28s var(--spring); }
+.fork-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--red);
+  box-shadow: 0 1px 0 var(--relief-hi) inset, 0 22px 44px -26px rgba(0,0,0,.85);
+}
+.vert { transition: transform .28s var(--spring), border-color .18s ease; }
+.vert:hover { transform: translateY(-4px); border-color: var(--text-3); }
+.cell { transition: transform .28s var(--spring), border-color .18s ease; }
+.cell:hover { transform: translateY(-3px); border-color: var(--text-3); }
+.compat-app { transition: background .18s ease; }
+.compat-app:hover { background: var(--panel-2); }
 .fork-card .shot { position: relative; aspect-ratio: 16/10; }
 .fork-card .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .fork-card .shot::after {
@@ -435,10 +487,15 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
 /* Two graphics share the frame the way they would on air: the stats
    card sits high and centre, the scorebug rides the lower third. They
    must not touch — that is the whole point of a safe area. */
+/* The stats card sits back in the frame at reduced opacity, the way a
+   broadcast overlay actually does — you can still see the pitch through
+   it. The scorebug in the lower third stays solid because it has to be
+   legible at a glance. */
 .g-center {
-  position: absolute; z-index: 2; left: 50%; top: 38%;
-  width: 52%; height: auto; object-fit: contain;
+  position: absolute; z-index: 2; left: 50%; top: 40%;
+  width: 66%; height: auto; object-fit: contain;
   transform: translate(-50%, -50%);
+  opacity: .88;
   filter: drop-shadow(0 12px 34px rgba(0,0,0,.55));
 }
 .g-lower {
@@ -464,6 +521,16 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
 }
 .frame-bar .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px var(--red); }
 .caption { margin-top: .8rem; font-size: .8rem; color: var(--text-3); max-width: 52ch; }
+
+/* A quiet Pellar mark in the corner of every frame — the way a
+   broadcaster's bug sits in the corner of their own output. */
+.safe > img.bug, .bug {
+  position: absolute; z-index: 4; right: 4.5%; bottom: 6%;
+  height: 26px; width: auto; opacity: .5;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.8));
+  pointer-events: none;
+}
+.bug.tl { right: auto; bottom: auto; left: 4.5%; top: 6%; }
 
 /* vertical cards: graphic looping over its own world.
    2x2 so each graphic is big enough to actually read. */
