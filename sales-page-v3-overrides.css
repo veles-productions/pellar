@@ -150,3 +150,27 @@
     font-size: clamp(1.55rem, 9vw, 2.65rem);
   }
 }
+
+/* ── Light mode for the pieces this file owns ──────────────
+   These selectors are defined here, so the light palette has to be
+   answered here too — otherwise the hero and the ICP band stay dark
+   on a light page. */
+:root.light .hero::before { opacity: .16; }
+:root.light .hero::after {
+  background:
+    linear-gradient(90deg, rgb(241 243 246 / .97) 0%, rgb(241 243 246 / .8) 48%, rgb(241 243 246 / .5) 100%),
+    linear-gradient(180deg, rgb(241 243 246 / .5) 0%, rgb(241 243 246 / .94) 100%);
+}
+/* The band keeps its dark plate in both modes — it reads as an inserted
+   strip of output, not as page background. */
+:root.light .icp-band {
+  border-color: rgb(31 95 191 / .34);
+  background: rgb(31 95 191 / .3);
+}
+:root.light .icp-band span,
+:root.light .use-grid article > span {
+  color: #DCEBFF;
+  background: rgb(10 16 26 / .92);
+  text-shadow: 0 0 22px rgb(31 95 191 / .5);
+}
+:root.light .studio-scrub-copy > p:not(.index) { color: #c6ceda; }
