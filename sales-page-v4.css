@@ -465,10 +465,10 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
 .frame-bar .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px var(--red); }
 .caption { margin-top: .8rem; font-size: .8rem; color: var(--text-3); max-width: 52ch; }
 
-/* vertical cards: graphic looping over its own world */
-.verts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-@media (max-width: 1040px) { .verts { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 560px)  { .verts { grid-template-columns: 1fr; } }
+/* vertical cards: graphic looping over its own world.
+   2x2 so each graphic is big enough to actually read. */
+.verts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+@media (max-width: 720px) { .verts { grid-template-columns: 1fr; } }
 .vert {
   border: 1px solid var(--edge); border-radius: var(--r);
   background: var(--panel); overflow: hidden;
@@ -484,9 +484,46 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
   content: ""; position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(to top, rgba(5,8,16,.72), rgba(5,8,16,.18) 55%, rgba(5,8,16,.4));
 }
-.vert .cap { padding: 1rem 1.15rem 1.2rem; }
-.vert .cap strong { display: block; font-size: 1.02rem; font-weight: 700; letter-spacing: -.03em; }
-.vert .cap span { color: var(--text-2); font-size: .85rem; }
+.vert .cap { padding: 1.25rem 1.4rem 1.45rem; }
+.vert .cap strong { display: block; font-size: 1.22rem; font-weight: 700; letter-spacing: -.035em; margin-bottom: .15rem; }
+.vert .cap span { color: var(--text-2); font-size: .92rem; }
+
+/* ── Compatibility roadmap ────────────────────────────────
+      Deliberately honest: status per app, and we do not claim
+      "works with" until an app has passed end-to-end QA. */
+.compat-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: end; margin-bottom: 2.2rem; }
+@media (max-width: 860px) { .compat-head { grid-template-columns: 1fr; align-items: start; } }
+.compat-head p { color: var(--text-2); margin: 0; }
+
+.compat-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--edge); border-radius: var(--r); overflow: hidden;
+  background: var(--panel);
+}
+@media (max-width: 860px) { .compat-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .compat-grid { grid-template-columns: 1fr; } }
+.compat-app {
+  display: flex; align-items: center; gap: .9rem;
+  padding: 1.15rem 1.3rem;
+  border-right: 1px solid var(--edge); border-bottom: 1px solid var(--edge);
+}
+.compat-app img { width: 30px; height: 30px; object-fit: contain; }
+.compat-app strong { display: block; font-weight: 700; letter-spacing: -.02em; }
+.compat-app small {
+  display: block; margin-top: .18rem;
+  font-family: var(--mono); font-size: .66rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-3);
+}
+.compat-app.muted strong { color: var(--text-2); }
+.compat-wordmark {
+  width: 30px; display: grid; place-items: center;
+  font-weight: 700; font-style: italic; letter-spacing: -.07em; font-size: .95rem;
+}
+.compat-note { margin-top: 1.1rem; font-size: .8rem; color: var(--text-3); max-width: 84ch; }
+
+/* the badge sits in the footer, unfiltered — its green is its own */
+.foot-badge { height: 46px; width: auto; }
 
 /* ── Bento telemetry grid — real data, never illustration ─ */
 .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }

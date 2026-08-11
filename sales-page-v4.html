@@ -318,17 +318,17 @@
           commitment, not a shipped feature &mdash; we will say so plainly when it lands.</p>
       </div>
       <div class="rise">
-        <div class="shelf">
-          <img src="assets/compat/obs-studio.svg" alt="OBS Studio">
-          <img src="assets/compat/streamlabs.svg" alt="Streamlabs">
-          <img src="assets/compat/xsplit.svg" alt="XSplit">
-          <img src="assets/compat/elgato.svg" alt="Elgato">
-          <img src="assets/compat/ndi.svg" alt="NDI">
-        </div>
-        <div class="shelf" style="margin-top:1rem">
-          <img src="assets/nvidia/nvidia-inception-program-badge-rgb-for-screen.svg"
-               alt="NVIDIA Inception Program" style="height:40px">
-        </div>
+        <div class="tickrow"><span class="nm">Voice</span>
+          <span class="ticks"><span class="hot"></span><span class="hot"></span><span class="hot"></span><span></span><span></span><span></span><span></span></span>
+          <span class="val">TESTING</span></div>
+        <div class="tickrow"><span class="nm">Render</span>
+          <span class="ticks"><span class="hot"></span><span class="hot"></span><span class="hot"></span><span class="hot"></span><span class="hot"></span><span class="hot"></span><span></span></span>
+          <span class="val">LOCAL</span></div>
+        <div class="tickrow"><span class="nm">Data</span>
+          <span class="ticks"><span class="hot"></span><span class="hot"></span><span class="hot"></span><span class="hot"></span><span></span><span></span><span></span></span>
+          <span class="val">YOURS</span></div>
+        <p class="caption">Nothing here is a claim about today. It is what we are building toward,
+          and we will mark each one shipped when it ships.</p>
       </div>
     </div>
   </div>
@@ -378,6 +378,53 @@
   </div>
 </section>
 
+<!-- ══ 9b. COMPATIBILITY ROADMAP ════════════════════════════
+     Kept honest on purpose: status per app, no "works with"
+     until an app has passed end-to-end QA. -->
+<section class="pad" id="compat">
+  <div class="wrap">
+    <div class="eyebrow"><span>Compatibility roadmap</span></div>
+
+    <div class="compat-head rise">
+      <h2 class="disp">The apps around<br>your stream.</h2>
+      <p>Creator output is still in development. We will only say &ldquo;works with&rdquo; after each
+        app passes an end-to-end Pellar test.</p>
+    </div>
+
+    <ul class="compat-grid rise">
+      <li class="compat-app">
+        <img src="assets/compat/obs-studio.svg" alt="" width="30" height="30">
+        <span><strong>OBS Studio</strong><small>Closed-beta target</small></span>
+      </li>
+      <li class="compat-app">
+        <span class="compat-wordmark" aria-hidden="true">vMix</span>
+        <span><strong>vMix</strong><small>Closed-beta target</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/streamlabs.svg" alt="" width="30" height="30">
+        <span><strong>Streamlabs</strong><small>Needs Pellar QA</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/xsplit.svg" alt="" width="30" height="30">
+        <span><strong>XSplit</strong><small>Needs Pellar QA</small></span>
+      </li>
+      <li class="compat-app muted">
+        <img src="assets/compat/elgato.svg" alt="" width="30" height="30">
+        <span><strong>Stream Deck</strong><small>Indirect, through OBS</small></span>
+      </li>
+      <li class="compat-app">
+        <img src="assets/compat/ndi.svg" alt="" width="30" height="30">
+        <span><strong>NDI</strong><small>Output verified locally</small></span>
+      </li>
+    </ul>
+
+    <p class="compat-note">OBS and vMix are the first creator-output test targets. Streamlabs and
+      XSplit accept browser sources but Pellar has not passed QA in either. Stream Deck would control
+      source visibility through OBS; it is not a direct Pellar integration. Logos identify their
+      owners; no partnership is implied.</p>
+  </div>
+</section>
+
 <!-- ══ 10. WAITLIST ═════════════════════════════════════════ -->
 <section class="pad" id="waitlist">
   <div class="wrap" style="max-width:760px">
@@ -413,6 +460,10 @@
     <div>
       <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
       <a href="mailto:pellar@velesproductions.com">pellar@velesproductions.com</a>
+    </div>
+    <div>
+      <img class="foot-badge" src="assets/nvidia/nvidia-inception-program-badge-rgb-for-screen.svg"
+           alt="NVIDIA Inception Program member">
     </div>
   </div>
 </footer>
