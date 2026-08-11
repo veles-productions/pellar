@@ -1,0 +1,152 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url("assets/backplates/elections-control-room.jpg") center / cover no-repeat;
+  opacity: .28;
+  filter: saturate(.9) contrast(1.08);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(6 8 12 / .96) 0%, rgb(6 8 12 / .72) 48%, rgb(6 8 12 / .36) 100%),
+    linear-gradient(180deg, rgb(6 8 12 / .42) 0%, rgb(6 8 12 / .92) 100%);
+}
+
+.studio-scrub {
+  position: relative;
+  min-height: 112svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  isolation: isolate;
+  border-block: 1px solid var(--line);
+  background: #020407;
+}
+
+.studio-scrub-video {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  filter: saturate(.86) contrast(1.1);
+}
+
+.studio-scrub-fade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgb(6 8 12 / .26) 0%, rgb(6 8 12 / .18) 36%, rgb(6 8 12 / .94) 100%),
+    linear-gradient(90deg, rgb(6 8 12 / .9) 0%, rgb(6 8 12 / .48) 52%, rgb(6 8 12 / .78) 100%);
+}
+
+.studio-scrub-copy {
+  width: min(1320px, calc(100% - 2.4rem));
+  margin: 0 auto;
+  padding: 0 0 clamp(3rem, 9vw, 8rem);
+}
+
+.studio-scrub-copy h2 {
+  max-width: 11ch;
+  margin: .7rem 0 1.2rem;
+  font-size: clamp(3.2rem, 8vw, 8.6rem);
+  line-height: .9;
+  letter-spacing: 0;
+}
+
+.studio-scrub-copy > p:not(.index) {
+  max-width: 56ch;
+  color: #c6ceda;
+}
+
+.icp-band {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  border: 1px solid rgb(117 183 255 / .34);
+  background: rgb(117 183 255 / .28);
+}
+
+.icp-band span,
+.use-grid article > span {
+  display: flex;
+  align-items: center;
+  min-height: 96px;
+  padding: .9rem;
+  color: #92c9ff;
+  background: rgb(5 9 16 / .82);
+  font: 700 clamp(1.25rem, 2.6vw, 2.65rem) / .94 var(--display);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-shadow: 0 0 22px rgb(54 125 255 / .42);
+}
+
+.use-grid article {
+  min-height: 340px;
+}
+
+.use-grid svg {
+  margin-top: 2rem;
+}
+
+.proof-media video {
+  border: 1px solid var(--line2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-scrub-video {
+    display: none;
+  }
+
+  .studio-scrub {
+    background:
+      linear-gradient(180deg, rgb(6 8 12 / .35), rgb(6 8 12 / .92)),
+      url("assets/backplates/elections-studio-wide.jpg") center / cover no-repeat;
+  }
+}
+
+@media (max-width: 1000px) {
+  .icp-band {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .studio-scrub {
+    min-height: 96svh;
+  }
+}
+
+@media (max-width: 680px) {
+  .studio-scrub-copy {
+    width: calc(100% - 2rem);
+  }
+
+  .studio-scrub-copy h2 {
+    font-size: clamp(3rem, 15vw, 4.9rem);
+  }
+
+  .icp-band {
+    grid-template-columns: 1fr;
+  }
+
+  .icp-band span,
+  .use-grid article > span {
+    min-height: 74px;
+    font-size: clamp(1.55rem, 9vw, 2.65rem);
+  }
+}
