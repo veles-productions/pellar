@@ -1,0 +1,62 @@
+# Pellar public site repo — keep it to the bare minimum the site needs.
+# Internal working material lives locally in this folder but must NOT be published.
+
+# Internal working files (design grills, planning, reviews, dev tooling)
+.grill-me/
+.planning/
+.review/
+.impeccable/
+.claude/
+.codex/
+tools/
+*ADVERSARIAL_REVIEW*.md
+*_REVIEW_*.md
+*.draft.md
+*-run*.log
+
+# Superseded / draft page sources (index.html is the deployed page)
+sales-page-v2.*
+sales-page-v3.html
+
+# Scratch / local
+.playwright-mcp/
+*.local
+.DS_Store
+Thumbs.db
+
+# Unused assets (old-design leftovers) — kept locally, not published
+/assets/art/hand-orb.webp
+/assets/backplates/creatordesk.jpg
+/assets/compat/elgato.svg
+/assets/compat/ndi.svg
+/assets/compat/obs-studio.svg
+/assets/compat/streamlabs.svg
+/assets/compat/xsplit.svg
+/assets/graphics/affairs-election.gif
+/assets/graphics/affairs-election.webp
+/assets/graphics/affairs-poll.gif
+/assets/graphics/creator-counter.gif
+/assets/graphics/creator-counter.png
+/assets/graphics/creator-counter.webp
+/assets/graphics/esports-standings.gif
+/assets/graphics/esports-standings.webp
+/assets/graphics/markets-bar.gif
+/assets/graphics/markets-bar.webp
+/assets/graphics/sport-matchstats.gif
+/assets/graphics/sport-matchstats.webp
+/assets/graphics/sport-scorebug.gif
+/assets/graphics/sport-scorebug.png
+/assets/graphics/sport-scorebug.webp
+/assets/nvidia/nvidia-inception-program-badge-rgb-for-screen.png
+/assets/pellar-logo.png
+/assets/proof/controlroom-poster.jpg
+/assets/proof/election-cameras-poster.jpg
+/assets/proof/studio-camera.jpg
+/assets/proof/studio-floor.jpg
+/assets/vendor/ScrollTrigger.min.js
+/assets/vendor/gsap.min.js
+/assets/video/controlroom.mp4
+/assets/video/election-cameras.mp4
+/assets/video/election-studio.mp4
+/assets/video/elections-control-loop.mp4
+/assets/video/lights-on-scrub.mp4
