@@ -23,29 +23,49 @@
   }
 
   var templates = {
-    sport: { label: 'Sport / Match stats', plate: 'assets/backplates/stadium.jpg', output: 'assets/graphics/sport-matchstats-alpha.webp', alt: 'Animated match statistics template', command: '"Show the match stats."' },
-    markets: { label: 'Markets / Index strip', plate: 'assets/backplates/markets.jpg', output: 'assets/graphics/markets-bar-alpha.webp', alt: 'Animated market index strip', command: '"Put the market move on screen."' },
-    affairs: { label: 'Current affairs / Results', plate: 'assets/backplates/homestudio.jpg', output: 'assets/graphics/affairs-election-alpha.webp', alt: 'Animated election results template', command: '"Show the latest results."' },
-    esports: { label: 'Esports / Standings', plate: 'assets/backplates/gaming.jpg', output: 'assets/graphics/esports-standings-alpha.webp', alt: 'Animated esports standings template', command: '"Bring up the standings."' }
+    sport: { label: 'Sport / Match stats', plate: 'assets/backplates/stadium.jpg', output: 'assets/graphics/sport-matchstats-alpha.webp', still: 'assets/graphics/sport-matchstats.png', alt: 'Animated match statistics template', command: '"Show the match stats."' },
+    markets: { label: 'Markets / Index strip', plate: 'assets/backplates/markets.jpg', output: 'assets/graphics/markets-bar-alpha.webp', still: 'assets/graphics/markets-bar.png', alt: 'Animated market index strip', command: '"Put the market move on screen."' },
+    affairs: { label: 'Current affairs / Results', plate: 'assets/backplates/homestudio.jpg', output: 'assets/graphics/affairs-election-alpha.webp', still: 'assets/graphics/affairs-election.png', alt: 'Animated election results template', command: '"Show the latest results."' },
+    esports: { label: 'Esports / Standings', plate: 'assets/backplates/gaming.jpg', output: 'assets/graphics/esports-standings-alpha.webp', still: 'assets/graphics/esports-standings.png', alt: 'Animated esports standings template', command: '"Bring up the standings."' }
   };
 
   var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-template]'));
+  var panel = document.getElementById('tpl-panel');
   var plate = document.querySelector('[data-stage-plate]');
   var output = document.querySelector('[data-stage-output]');
   var label = document.querySelector('[data-stage-label]');
   var stageCommand = document.querySelector('[data-stage-command]');
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var selected = templates[tab.getAttribute('data-template')];
-      if (!selected) return;
-      tabs.forEach(function (item) { item.classList.remove('active'); item.setAttribute('aria-selected', 'false'); });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      plate.src = selected.plate;
-      output.src = selected.output;
+
+  function selectTab(tab, focus) {
+    var selected = templates[tab.getAttribute('data-template')];
+    if (!selected) return;
+    tabs.forEach(function (item) {
+      var on = item === tab;
+      item.classList.toggle('active', on);
+      item.setAttribute('aria-selected', on ? 'true' : 'false');
+      item.tabIndex = on ? 0 : -1;
+    });
+    if (plate) plate.src = selected.plate;
+    if (output) {
+      // Honour reduced-motion: the still frame instead of the looping WebP.
+      output.src = reduced ? selected.still : selected.output;
       output.alt = selected.alt;
-      label.textContent = selected.label;
-      stageCommand.textContent = selected.command;
+    }
+    if (label) label.textContent = selected.label;
+    if (stageCommand) stageCommand.textContent = selected.command;
+    if (panel) panel.setAttribute('aria-labelledby', tab.id);
+    if (focus) tab.focus();
+  }
+
+  tabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { selectTab(tab, false); });
+    tab.addEventListener('keydown', function (e) {
+      var next = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') next = tabs[0];
+      else if (e.key === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); selectTab(next, true); }
     });
   });
 

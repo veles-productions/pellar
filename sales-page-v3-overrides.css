@@ -174,3 +174,8 @@
   text-shadow: 0 0 22px rgb(31 95 191 / .5);
 }
 :root.light .studio-scrub-copy > p:not(.index) { color: #c6ceda; }
+/* The heading sits on the same dark control-room footage in both modes, so in
+   light mode it must NOT take the dark page text colour — it would vanish
+   against the video. Keep it (and its index label) light. */
+:root.light .studio-scrub-copy h2 { color: #f4f6fa; }
+:root.light .studio-scrub-copy .index { color: #8fc0ff; }
