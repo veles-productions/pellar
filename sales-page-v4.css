@@ -13,7 +13,7 @@
 /* ── Tokens: light mode is the base definition ───────────── */
 :root {
   --sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --disp: 'Barlow Condensed', 'Inter', system-ui, sans-serif;
+  --disp: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
   /* accent — the only one */
@@ -96,17 +96,19 @@ body {
 }
 
 /* ── Type registers ──────────────────────────────────────── */
+/* Display type is the earlier build's voice: Inter, heavy, tight
+   negative tracking, sentence case. Condensed caps were tried and
+   rejected — they read as a poster, not as a product. */
 .disp {
   font-family: var(--disp);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .01em;
-  line-height: .94;
+  font-weight: 700;
+  letter-spacing: -.045em;
+  line-height: 1.04;
   margin: 0;
 }
-h1.disp { font-size: clamp(2.9rem, 8vw, 6.6rem); }
-h2.disp { font-size: clamp(2.1rem, 5vw, 4rem); }
-h3.disp { font-size: clamp(1.3rem, 2.2vw, 1.8rem); }
+h1.disp { font-size: clamp(2.5rem, 5.8vw, 4.4rem); }
+h2.disp { font-size: clamp(1.7rem, 3.4vw, 2.5rem); letter-spacing: -.035em; }
+h3.disp { font-size: clamp(1.2rem, 1.9vw, 1.5rem); letter-spacing: -.03em; }
 
 /* faceplate microlabel — lifted straight off hardware */
 .label {
@@ -150,7 +152,9 @@ section { position: relative; }
   overflow: hidden;
   isolation: isolate;
 }
-.safe > img, .safe > video { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* the media that fills the frame — graphics laid over it opt out below */
+.safe > img:not(.g-center):not(.g-lower),
+.safe > video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .safe::before {
   content: "";
   position: absolute;
@@ -422,6 +426,67 @@ header.bar .logo, footer.foot .logo { height: 22px; width: auto; }
   border: 1px solid rgba(230,57,70,.5); color: #FF9BA3;
 }
 .transport .tag.mute { border-color: rgba(255,255,255,.14); color: #7E96AE; }
+
+/* ── Composite: real Pellar graphics over a stand-in plate ─
+      Carried over from the earlier build. The animated webp files ARE
+      the templates rendering with sample data — not mockups — so they
+      do the arguing that a screenshot cannot. */
+.plate { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+/* Two graphics share the frame the way they would on air: the stats
+   card sits high and centre, the scorebug rides the lower third. They
+   must not touch — that is the whole point of a safe area. */
+.g-center {
+  position: absolute; z-index: 2; left: 50%; top: 38%;
+  width: 52%; height: auto; object-fit: contain;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 12px 34px rgba(0,0,0,.55));
+}
+.g-lower {
+  position: absolute; z-index: 2; left: 6%; bottom: 9%;
+  width: 36%; height: auto; object-fit: contain;
+  filter: drop-shadow(0 10px 26px rgba(0,0,0,.6));
+}
+/* a vignette so the plate reads as footage, not wallpaper */
+.safe .plate + .veil-soft {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(120% 90% at 50% 45%, transparent 40%, rgba(5,8,16,.55) 100%);
+}
+.safe .plate ~ .brackets, .safe .plate ~ .cross { z-index: 4; }
+
+/* the small live tally, top-left inside a frame */
+.frame-bar {
+  position: absolute; z-index: 4; top: 6%; left: 6%;
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-family: var(--mono); font-size: .6rem; letter-spacing: .16em;
+  color: #fff; background: rgba(5,8,16,.6);
+  border: 1px solid rgba(255,255,255,.16); border-radius: 99px;
+  padding: .22rem .6rem;
+}
+.frame-bar .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px var(--red); }
+.caption { margin-top: .8rem; font-size: .8rem; color: var(--text-3); max-width: 52ch; }
+
+/* vertical cards: graphic looping over its own world */
+.verts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+@media (max-width: 1040px) { .verts { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px)  { .verts { grid-template-columns: 1fr; } }
+.vert {
+  border: 1px solid var(--edge); border-radius: var(--r);
+  background: var(--panel); overflow: hidden;
+  box-shadow: inset 0 1px 0 var(--relief-hi);
+}
+.vert .vis { position: relative; aspect-ratio: 16/10; background: var(--navy-900); overflow: hidden; }
+.vert .vis > img:not(.plate) {
+  position: absolute; z-index: 2; left: 50%; top: 50%;
+  transform: translate(-50%,-50%); width: 82%;
+  filter: drop-shadow(0 8px 22px rgba(0,0,0,.6));
+}
+.vert .vis::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(5,8,16,.72), rgba(5,8,16,.18) 55%, rgba(5,8,16,.4));
+}
+.vert .cap { padding: 1rem 1.15rem 1.2rem; }
+.vert .cap strong { display: block; font-size: 1.02rem; font-weight: 700; letter-spacing: -.03em; }
+.vert .cap span { color: var(--text-2); font-size: .85rem; }
 
 /* ── Bento telemetry grid — real data, never illustration ─ */
 .bento { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
