@@ -1,15 +1,19 @@
-# Pellar site versions (hipellar.velesproductions.com)
+# Pellar site versions
 
-Rules (from `00_AI_LAB/08_DOCUMENTATION/SOP/SOP_SITE_VERSIONING.md`):
+`hipellar.velesproductions.com` (GitHub Pages).
+
+## How this repo is versioned
+
 - `index.html` is only ever promoted to, never edited in place.
-- The active build is `index_vNN.html` at the repo root so `assets/` resolves.
-- `versions/` holds frozen baselines, read-only.
-- Every version gets a row here. Promotion = Sam's live in-browser sign-off, then a single copy `index_vNN.html` -> `index.html`.
-- This repo is public (GitHub Pages). Nothing is pushed until the footage rights and the build are approved.
+- The build in progress lives at the repo root as `index_vNN.html`, so `assets/` resolves the same way it will once promoted.
+- `versions/` holds frozen baselines. Read-only.
+- Promotion is a single copy, `index_vNN.html` -> `index.html`, after the build has been reviewed in a browser.
+- Every version gets a row below.
 
-| # | File | Origin | Status | Evidence |
-|---|---|---|---|---|
-| 00 | `versions/00_live_v3_d5fa1a3.html` | Snapshot of the live `index.html` at commit `d5fa1a3` (v3 promoted 11 Aug 2026, legal footer 7 Sept) | frozen baseline | live site 7 Sept 2026 |
-| 04 | `index_v04.html` | Copied from 00 on the branch `feat/site-studio-footage-v4`. Swaps the studio scroll-scrub clip for real studio footage with slow camera moves (all-intra encode so the scrub seeks per frame) and adds a control-room scrub band before section 05. | draft, LOCAL ONLY. Pushed by mistake 7 Sept 18:30 before Sam's review; PR #1 closed and remote branch deleted 21:35 (GitHub keeps refs/pull/1/head). Awaiting Sam's browser sign-off | `01_VERTICALS_KB/07_PELLAR/02_WEBSITE/V04_FOOTAGE_2026-09-07.md` in 00_AI_LAB; screenshots in `V04_SHOTS_2026-09-07/`; alternates in `V04_ALTERNATES_2026-09-07/` |
-| 05 | `index_v05.html` | Copied from 04. Nine shots from the Veles making-of film woven through the page: hero, section 01 band, voice workflow, templates, a hardware band, a small camera accent, the room-behind-it band, the proof section and a closing band. All loop with a 0.6s fade to black at each end except the room-behind-it band, which stays scroll-scrubbed. Adds no new copy to the live page. | PROMOTED to `index.html` 8 Sept 2026 on Sam's browser sign-off | `01_VERTICALS_KB/07_PELLAR/02_WEBSITE/V05_MAKINGOF_SELECTS_2026-09-08.md` in 00_AI_LAB |
+## Versions
 
+| # | File | What changed | Status |
+|---|---|---|---|
+| 00 | `versions/00_live_v3_d5fa1a3.html` | Frozen snapshot of v3, the build live from 11 Aug 2026, including the September legal footer. | baseline |
+| 04 | `index_v04.html` | Replaced the section 01 scroll-scrub clip with real studio footage on a slow camera move, encoded all-intra so the scrub seeks per frame, and added a control-room band. | superseded by 05 |
+| 05 | `index_v05.html` | Nine shots from the Veles making-of film across the page: hero, section 01, voice workflow, templates, a hardware band, a camera accent, the studio band, the proof section and a closing band. All loop with a short fade at each end except the studio band, which stays scroll-scrubbed. No copy changes against v3. | promoted to `index.html`, 8 Sept 2026 |
