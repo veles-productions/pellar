@@ -1,0 +1,105 @@
+/* v05 making-of footage layer (2026-09-08). Loaded only by index_v05.html until promotion. */
+
+/* Full-section film backgrounds: video sits behind the section content,
+   veiled with an opaque wash so type stays readable. */
+.has-film { position: relative; isolation: isolate; }
+.has-film > *:not(.film-bg) { position: relative; z-index: 1; }
+
+.film-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.film-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.film-bg-veil {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* Hero: lightest touch, the machine mock stays the subject. */
+.film-hero video { opacity: .9; }
+.film-hero .film-bg-veil {
+  background:
+    linear-gradient(180deg, rgb(6 8 12 / .58) 0%, rgb(6 8 12 / .42) 45%, rgb(6 8 12 / .9) 100%),
+    linear-gradient(90deg, rgb(6 8 12 / .82) 0%, rgb(6 8 12 / .3) 62%, rgb(6 8 12 / .55) 100%);
+}
+
+/* Voice workflow over the audio mixers - Pellar listens, so the desk belongs here. */
+.film-mixer video { opacity: .8; }
+.film-mixer .film-bg-veil {
+  background:
+    linear-gradient(180deg, rgb(6 8 12 / .9) 0%, rgb(6 8 12 / .6) 35%, rgb(6 8 12 / .9) 100%);
+}
+
+/* Templates over the studio-technology plate, already 62% black baked in. */
+.film-tech video { opacity: .95; }
+.film-tech .film-bg-veil {
+  background: linear-gradient(180deg, rgb(6 8 12 / .88) 0%, rgb(6 8 12 / .55) 50%, rgb(6 8 12 / .92) 100%);
+}
+
+/* Proof section over the gallery with the monitor wall live. */
+.film-gallery video { opacity: .75; }
+.film-gallery .film-bg-veil {
+  background: linear-gradient(180deg, rgb(6 8 12 / .9) 0%, rgb(6 8 12 / .62) 50%, rgb(6 8 12 / .94) 100%);
+}
+
+/* Hardware band and closing band reuse the scrub-band chrome. */
+.hw-scrub, .close-scrub { min-height: 62svh; align-items: end; }
+/* No copy on these two - they are pure imagery, so the wash is only a top and
+   bottom blend into the page, not a legibility scrim. */
+.hw-scrub .studio-scrub-fade,
+.close-scrub .studio-scrub-fade {
+  background: linear-gradient(180deg, rgb(6 8 12 / .85) 0%, rgb(6 8 12 / 0) 22%, rgb(6 8 12 / 0) 78%, rgb(6 8 12 / .85) 100%);
+}
+
+/* Small camera accent in the use-cases title block. */
+.use-title { position: relative; }
+.use-title .index { display: flex; align-items: center; gap: .7rem; white-space: nowrap; }
+@media (max-width: 700px) { .use-title .index { white-space: normal; } }
+.accent-film {
+  flex: 0 0 auto;
+  width: clamp(64px, 7vw, 88px);
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  overflow: hidden;
+  display: block;
+  opacity: .85;
+  border: 1px solid rgb(255 255 255 / .12);
+}
+.accent-film video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .film-bg video, .accent-film video { display: none; }
+  .film-hero { background: url("assets/backplates/v05/01_studio-pan-silhouettes.jpg") center / cover no-repeat; }
+  .film-mixer { background: url("assets/backplates/v05/07d_hw-audio-mixer.jpg") center / cover no-repeat; }
+  .film-tech { background: url("assets/backplates/v05/04_studio-technology.jpg") center / cover no-repeat; }
+  .film-gallery { background: url("assets/backplates/v05/08_control-room-2.jpg") center / cover no-repeat; }
+  .studio-scrub#studio {
+    background:
+      linear-gradient(180deg, rgb(6 8 12 / .35), rgb(6 8 12 / .92)),
+      url("assets/backplates/v05/02_monitors-studio-bg.jpg") center / cover no-repeat;
+  }
+  .floor-scrub {
+    background:
+      linear-gradient(0deg, rgb(6 8 12 / .35), rgb(6 8 12 / .92)),
+      url("assets/backplates/v05/03a_control-room-move.jpg") center / cover no-repeat;
+  }
+  .hw-scrub {
+    background:
+      linear-gradient(0deg, rgb(6 8 12 / .92), rgb(6 8 12 / .35)),
+      url("assets/backplates/v05/07bc_hw-red-gear-server-rack.jpg") center / cover no-repeat;
+  }
+  .close-scrub {
+    background:
+      linear-gradient(0deg, rgb(6 8 12 / .92), rgb(6 8 12 / .35)),
+      url("assets/backplates/v05/10_control-room-wide.jpg") center / cover no-repeat;
+  }
+}

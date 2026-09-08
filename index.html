@@ -11,7 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="sales-page-v3.css">
   <link rel="stylesheet" href="sales-page-v3-overrides.css">
+  <link rel="stylesheet" href="sales-page-v4-overrides.css">
+  <link rel="stylesheet" href="sales-page-v5-overrides.css">
   <meta name="theme-color" content="#06080c">
+  <!-- v05: making-of selects woven through the page, 2026-09-08 -->
   <meta property="og:title" content="Pellar - broadcast graphics for one-person streams">
   <meta property="og:description" content="Say a live update out loud; Pellar puts the animated broadcast graphic on screen. Scores, polls, standings, market moves.">
   <meta property="og:type" content="website">
@@ -67,7 +70,8 @@
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
+    <section class="hero has-film" id="top">
+      <div class="film-bg film-hero" aria-hidden="true"><video autoplay loop muted playsinline preload="auto" poster="assets/backplates/v05/01_studio-pan-silhouettes.jpg"><source src="assets/video/v05/01_studio-pan-silhouettes-loop.mp4" type="video/mp4"></video><span class="film-bg-veil"></span></div>
       <div class="hero-copy">
         <p class="signal-label"><i></i> Voice control is live</p>
         <h1>Say it.<br><span>Put it on screen.</span></h1>
@@ -98,8 +102,8 @@
     </section>
 
     <section class="studio-scrub" id="studio" aria-label="Studio and control room footage">
-      <video class="studio-scrub-video" data-scrub-video muted playsinline preload="metadata" poster="assets/backplates/elections-studio-wide.jpg">
-        <source src="assets/video/elections-studio-loop.mp4" type="video/mp4">
+      <video class="studio-scrub-video" autoplay loop muted playsinline preload="auto" poster="assets/backplates/v05/02_monitors-studio-bg.jpg">
+        <source src="assets/video/v05/02_monitors-studio-bg-loop.mp4" type="video/mp4">
       </video>
       <div class="studio-scrub-fade" aria-hidden="true"></div>
       <div class="studio-scrub-copy">
@@ -115,7 +119,8 @@
       </div>
     </section>
 
-    <section class="voice-flow" id="voice-flow">
+    <section class="voice-flow has-film" id="voice-flow">
+      <div class="film-bg film-mixer" aria-hidden="true"><video autoplay loop muted playsinline preload="auto" poster="assets/backplates/v05/07d_hw-audio-mixer.jpg"><source src="assets/video/v05/07d_hw-audio-mixer-loop.mp4" type="video/mp4"></video><span class="film-bg-veil"></span></div>
       <div class="section-intro"><p class="index">01 / Voice workflow</p><h2>One sentence.<br>Four systems move.</h2><p>Pellar listens for the update, reads the values, chooses the right working template and sends it to the live scene.</p></div>
       <div class="flow-board">
         <article><span class="flow-index">01</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6"/></svg><small>Voice</small><strong>"Put the poll up."</strong><div class="mini-wave"><i></i><i></i><i></i><i></i></div></article>
@@ -125,7 +130,8 @@
       </div>
     </section>
 
-    <section class="templates" id="templates">
+    <section class="templates has-film" id="templates">
+      <div class="film-bg film-tech" aria-hidden="true"><video autoplay loop muted playsinline preload="auto" poster="assets/backplates/v05/04_studio-technology.jpg"><source src="assets/video/v05/04_studio-technology-DARK-loop.mp4" type="video/mp4"></video><span class="film-bg-veil"></span></div>
       <div class="section-intro"><p class="index">02 / Working templates</p><h2>Broadcast graphics.<br>No blank canvas.</h2><p>You choose the format. Pellar keeps the type, spacing and motion intact while the live data changes.</p></div>
       <div class="template-console">
         <div class="template-menu" role="tablist" aria-label="Graphic categories">
@@ -146,6 +152,13 @@
       </div>
     </section>
 
+    <section class="studio-scrub hw-scrub" id="hardware" aria-label="Broadcast hardware">
+      <video class="studio-scrub-video" autoplay loop muted playsinline preload="auto" poster="assets/backplates/v05/07bc_hw-red-gear-server-rack.jpg">
+        <source src="assets/video/v05/07bc_hw-red-gear-server-rack-loop.mp4" type="video/mp4">
+      </video>
+      <div class="studio-scrub-fade" aria-hidden="true"></div>
+    </section>
+
     <section class="voice-proof">
       <div class="orb-film">
         <video data-scrub-video data-scrub-band=".14" muted playsinline preload="auto" poster="assets/art/orb-poll-poster.jpg" aria-label="A hand and glowing orb projecting a poll graphic"><source src="assets/video/orb-poll.mp4" type="video/mp4"></video>
@@ -155,7 +168,7 @@
     </section>
 
     <section class="use-cases">
-      <div class="use-title"><p class="index">04 / One operator</p><h2>Built for the person running the whole show.</h2></div>
+      <div class="use-title"><p class="index"><span class="accent-film" aria-hidden="true"><video autoplay loop muted playsinline preload="auto" poster="assets/backplates/v05/06_cameras.jpg"><source src="assets/video/v05/06_cameras.mp4" type="video/mp4"></video></span>04 / One operator</p><h2>Built for the person running the whole show.</h2></div>
       <div class="use-grid">
         <article><span>SPORT</span><div class="use-plate"><img class="use-bg" src="assets/backplates/stadium.jpg" alt="" aria-hidden="true" loading="lazy"><span class="use-vignette" aria-hidden="true"></span><img class="use-anim" src="assets/graphics/sport-matchstats-alpha.webp" data-still="assets/graphics/sport-matchstats.png" alt="Animated match-stats graphic" loading="lazy" decoding="async"></div><h3>Scores move fast.</h3><p>Bring up match stats, standings and score changes while the moment is still live.</p></article>
         <article><span>MARKETS</span><div class="use-plate"><img class="use-bg" src="assets/backplates/markets.jpg" alt="" aria-hidden="true" loading="lazy"><span class="use-vignette" aria-hidden="true"></span><img class="use-anim" src="assets/graphics/markets-bar-alpha.webp" data-still="assets/graphics/markets-bar.png" alt="Animated market index graphic" loading="lazy" decoding="async"></div><h3>Numbers are the story.</h3><p>Put an index, price move or comparison on screen without breaking your explanation.</p></article>
@@ -164,9 +177,29 @@
       </div>
     </section>
 
-    <section class="proof" id="proof">
+    <section class="studio-scrub floor-scrub" id="floor" aria-label="XR studio footage">
+      <video class="studio-scrub-video" data-scrub-video data-scrub-band=".08" muted playsinline preload="auto" poster="assets/backplates/v05/03a_control-room-move.jpg">
+        <source src="assets/video/v05/03a_control-room-move.mp4" type="video/mp4">
+      </video>
+      <div class="studio-scrub-fade" aria-hidden="true"></div>
+      <div class="studio-scrub-copy">
+        <p class="index">04 / The room behind it</p>
+        <h2>Built in a real studio.<br>Run by one voice.</h2>
+        <p>Veles Productions runs an XR studio and a broadcast control room in Warsaw. Pellar takes that room's routine, cue in and graphic out, and hands it to one person with a microphone.</p>
+      </div>
+    </section>
+
+    <section class="proof has-film" id="proof">
+      <div class="film-bg film-gallery" aria-hidden="true"><video autoplay loop muted playsinline preload="auto" poster="assets/backplates/v05/08_control-room-2.jpg"><source src="assets/video/v05/08_control-room-2-loop.mp4" type="video/mp4"></video><span class="film-bg-veil"></span></div>
       <div class="proof-media"><video muted loop playsinline controls poster="assets/proof/election-studio-poster.jpg"><source src="assets/video/veles-reel.mp4" type="video/mp4"></video><span>Veles Productions / Broadcast work</span></div>
       <div class="proof-copy"><p class="index">05 / Where it comes from</p><h2>Made by people who put graphics on air.</h2><p>Veles Productions builds virtual studios and broadcast graphics for live television. Pellar puts that production logic into a tool one creator can run.</p><div class="proof-stat"><strong>Broadcast craft</strong><span>turned into repeatable templates</span></div><div class="proof-stat"><strong>Working output</strong><span>shown with sample data on this page</span></div></div>
+    </section>
+
+    <section class="studio-scrub close-scrub" id="closing" aria-label="Control room wide">
+      <video class="studio-scrub-video" autoplay loop muted playsinline preload="auto" poster="assets/backplates/v05/10_control-room-wide.jpg">
+        <source src="assets/video/v05/10_control-room-wide-loop.mp4" type="video/mp4">
+      </video>
+      <div class="studio-scrub-fade" aria-hidden="true"></div>
     </section>
 
     <section class="access" id="access">
