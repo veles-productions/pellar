@@ -1,0 +1,25 @@
+/* v04 footage bands (2026-09-07). Loaded only by index_v04.html until promotion. */
+.floor-scrub {
+  min-height: 92svh;
+  align-items: start;
+}
+.floor-scrub .studio-scrub-copy {
+  padding: clamp(3rem, 9vw, 7rem) 0 clamp(3rem, 9vw, 8rem);
+}
+.floor-scrub .studio-scrub-fade {
+  background:
+    linear-gradient(0deg, rgb(6 8 12 / .3) 0%, rgb(6 8 12 / .18) 40%, rgb(6 8 12 / .94) 100%),
+    linear-gradient(90deg, rgb(6 8 12 / .9) 0%, rgb(6 8 12 / .48) 52%, rgb(6 8 12 / .78) 100%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-scrub {
+    background:
+      linear-gradient(180deg, rgb(6 8 12 / .35), rgb(6 8 12 / .92)),
+      url("assets/backplates/controlroom-dolly.jpg") center / cover no-repeat;
+  }
+  .floor-scrub {
+    background:
+      linear-gradient(0deg, rgb(6 8 12 / .35), rgb(6 8 12 / .92)),
+      url("assets/backplates/xr-crane.jpg") center / cover no-repeat;
+  }
+}
