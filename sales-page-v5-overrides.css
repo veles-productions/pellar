@@ -103,3 +103,19 @@
       url("assets/backplates/v05/10_control-room-wide.jpg") center / cover no-repeat;
   }
 }
+
+
+/* Light mode. The film sections put dark footage behind copy that turns dark in
+   light mode, so the veil has to invert with the palette rather than stay dark.
+   Light mode here is a real palette, not an inversion: the footage sits back as
+   a pale texture and the type keeps its normal light-mode colour. */
+:root.light .film-bg video { opacity: .22; }
+:root.light .film-hero .film-bg-veil,
+:root.light .film-mixer .film-bg-veil,
+:root.light .film-tech .film-bg-veil,
+:root.light .film-gallery .film-bg-veil {
+  background:
+    linear-gradient(180deg, rgb(246 248 251 / .9) 0%, rgb(246 248 251 / .82) 45%, rgb(246 248 251 / .96) 100%),
+    linear-gradient(90deg, rgb(246 248 251 / .92) 0%, rgb(246 248 251 / .74) 62%, rgb(246 248 251 / .88) 100%);
+}
+:root.light .accent-film { opacity: .95; border-color: rgb(0 0 0 / .14); }
